@@ -10,13 +10,11 @@ const defaultHeaders = {
   Accept: 'application/json',
 };
 
-const SERVER_URL = (process.env.NODE_ENV === 'development') ? 'http://localhost:3000' : process.env.REACT_APP_SERVER_URL;
-
 const restApi = {
   authenticate: function (email: string, password: string): Promise<AxiosResponse<AuthenticateResponseBodyDto>> {
     return axios({
       method: 'POST',
-      url: `${SERVER_URL}/api/auth/login`,
+      url: '/api/auth/login',
       data: { email, password },
       headers: defaultHeaders,
     });
@@ -25,7 +23,7 @@ const restApi = {
   logout: function (): Promise<AxiosResponse<string>> {
     return axios({
       method: 'POST',
-      url: `${SERVER_URL}/api/auth/logout`,
+      url: '/api/auth/logout',
       headers: defaultHeaders,
     });
   },
@@ -33,14 +31,14 @@ const restApi = {
   checkLoginStatus: function (): Promise<AxiosResponse<string>> {
     return axios({
       method: 'GET',
-      url: `${SERVER_URL}/api/auth/checkToken`,
+      url: '/api/auth/checkToken',
     });
   },
 
   fetchServiceTypes: async function (): Promise<ServiceTypeDto[]> {
     const res: AxiosResponse<ServiceTypeDto[]> = await axios({
       method: 'GET',
-      url: `${SERVER_URL}/api/serviceTypes`,
+      url: '/api/serviceTypes',
     });
     return res.data;
   },
@@ -48,7 +46,7 @@ const restApi = {
   fetchStaffList: async function (): Promise<StaffDto[]> {
     const res: AxiosResponse<StaffDto[]> = await axios({
       method: 'GET',
-      url: `${SERVER_URL}/api/staff`,
+      url: '/api/staff',
     });
     return res.data;
   },
@@ -56,7 +54,7 @@ const restApi = {
   fetchCaptcha: async function (): Promise<string> {
     const res: AxiosResponse<string> = await axios({
       method: 'GET',
-      url: `${SERVER_URL}/api/captcha`,
+      url: '/api/captcha',
       headers: defaultHeaders,
     });
     return res.data;
@@ -68,7 +66,7 @@ const restApi = {
     try {
       await axios({
         method: 'POST',
-        url: `${SERVER_URL}/api/booking`,
+        url: '/api/booking',
         data: data,
         headers: defaultHeaders,
       });
