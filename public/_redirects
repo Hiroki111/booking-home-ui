@@ -1,4 +1,19 @@
-/api/*  https://booking-express-server.herokuapp.com 200
+#auth
+/api/auth/login https://booking-express-server.herokuapp.com/api/auth/login  200
+/api/auth/logout https://booking-express-server.herokuapp.com/api/auth/logout  200
+/api/auth/checkToken https://booking-express-server.herokuapp.com/api/auth/checkToken  200
+
+#serviceTypes
+/api/serviceTypes https://booking-express-server.herokuapp.com/api/serviceTypes  200
+
+#staff
+/api/staff https://booking-express-server.herokuapp.com/api/staff  200
+
+#captcha
+/api/captcha https://booking-express-server.herokuapp.com/api/captcha  200
+
+#booking
+/api/booking https://booking-express-server.herokuapp.com/api/booking  200
 
 /*  /index.html  200
 
