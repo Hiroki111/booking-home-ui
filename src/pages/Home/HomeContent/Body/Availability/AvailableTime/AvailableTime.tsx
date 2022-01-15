@@ -16,8 +16,14 @@ function AvailableTime(_props: any, ref: ForwardedRef<HTMLDivElement>) {
   const history = useHistory();
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
-  const { selectedStaff, selectedDate, selectedServices, setSelectedTimeSlot, setSelectedStaff, setSelectedDate } =
-    useHomePageContext();
+  const {
+    selectedStaff,
+    selectedDate,
+    selectedServices,
+    setSelectedTimeSlot,
+    setSelectedStaff,
+    setSelectedDate,
+  } = useHomePageContext();
   const regularStaffQuery = useRegularStaffQuery(selectedServices);
   const staffList = regularStaffQuery.data || [];
 

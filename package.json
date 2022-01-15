@@ -33,7 +33,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "format": "prettier --write src"
   },
   "eslintConfig": {
     "extends": [
@@ -65,9 +66,9 @@
     "react-test-renderer": "^17.0.2"
   },
   "lint-staged": {
-    "src/*": [
+    "src/**/*.{js,ts,tsx,json}": [
       "prettier --write --ignore-unknown",
-      "eslint ."
+      "eslint src/**/*.{js,ts,tsx,json}"
     ]
   }
 }

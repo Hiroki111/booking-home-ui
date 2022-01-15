@@ -7,7 +7,7 @@ import { useStyles } from './useStyles';
 
 export function NavigationBar() {
   const classes = useStyles();
-  const [displayedMonthText, setDisplayedMonthText] = useState(null as unknown as string);
+  const [displayedMonthText, setDisplayedMonthText] = useState((null as unknown) as string);
   const { setSelectedDate } = useHomePageContext();
 
   function NavigationRootComponent(props: any) {
