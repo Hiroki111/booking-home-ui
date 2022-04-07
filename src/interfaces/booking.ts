@@ -1,7 +1,6 @@
 export interface BookingRequestDto {
   firstName: string;
   lastName: string;
-  countryPhoneCode: string;
   phoneNumber: string;
   email: string;
   serviceIds: number[];

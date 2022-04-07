@@ -75,8 +75,7 @@ describe('BookingModal.tsx', () => {
       expect(restApi.bookAppointment).toHaveBeenCalledWith({
         firstName: 'John',
         lastName: 'Smith',
-        countryPhoneCode: '+123',
-        phoneNumber: '444555666',
+        phoneNumber: '+123444555666',
         email: 'john@mock.com',
         serviceIds: [10, 20],
         totalPrice: 35.5,

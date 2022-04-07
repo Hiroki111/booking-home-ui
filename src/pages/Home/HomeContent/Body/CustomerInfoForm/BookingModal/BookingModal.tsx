@@ -13,6 +13,7 @@ import { ROUTES } from '../../../../../../routes';
 import { BookingSummary } from './BookingSummary';
 import { SecurityCheck } from './SecurityCheck';
 import { useStyles } from './useStyles';
+import { BookingRequestDto } from '../../../../../../interfaces/booking';
 
 interface Props {
   isOpen: boolean;
@@ -45,6 +46,8 @@ export function BookingModal({ isOpen, handleClose }: Props) {
   function handleBookAppointment() {
     createAppointmentMutation.mutate({
       ...customer,
+      countryPhoneCode: undefined,
+      phoneNumber: [customer.countryPhoneCode.trim(), customer.phoneNumber.trim()].join(''),
       serviceIds: selectedServices.map((selectedService) => selectedService.id),
       totalPrice: calculateOrder(selectedServices).totalPrice,
       staffId: selectedStaff.id,
@@ -53,7 +56,7 @@ export function BookingModal({ isOpen, handleClose }: Props) {
       startTime: selectedTimeSlot.startTime,
       endTime: calculateExpectedEndTime(selectedTimeSlot.startTime, selectedServices),
       captchaText: captchaResonse,
-    });
+    } as BookingRequestDto);
   }
 
   return (
