@@ -44,6 +44,8 @@ export function BookingModal({ isOpen, handleClose }: Props) {
   }, [createAppointmentMutation.isSuccess, history, resetAppointmentData, setShowBookingConfirmation]);
 
   function handleBookAppointment() {
+    // validate phone number
+
     createAppointmentMutation.mutate({
       ...customer,
       countryPhoneCode: undefined,

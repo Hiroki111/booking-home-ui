@@ -33,12 +33,18 @@ const INITIAL_COUNTRY_PHONE_CODE =
   COUNTRY_PHONE_CODE_OPTIONS.find((option) => option.countryAcronym === INITIAL_COUNTRY_FOR_PHONE_CODE) ||
   ({} as CountryPhoneCodeOption);
 
+// Solomon Islands
+const MIN_PHONE_NUMBER_LENGTH = 5;
+// Italy, China, etc
+const MAX_PHONE_NUMBER_LENGTH = 13;
+
 export function CustomerInfoForm() {
   const classes = useStyles();
   const [isPrivacyPolicyChecked, setIsPrivacyPolicyChecked] = useState(true);
   const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
   const [showBookingConfirmationModal, setBookingConfirmationModal] = useState(false);
   const [selectedCountryPhoneCode, setSelectedCountryPhoneCode] = useState(INITIAL_COUNTRY_PHONE_CODE);
+  const [invalidPhoneNumberText, setInvalidPhoneNumberText] = useState<string>('');
   const location = useLocation();
   const { customer, setCustomer, bookingCompletionState } = useHomePageContext();
   const pathToSkippedPage = getPathToSkippedPage(location.pathname, bookingCompletionState);
@@ -64,6 +70,17 @@ export function CustomerInfoForm() {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (customer.phoneNumber.match(/[^\d]/)) {
+      setInvalidPhoneNumberText('Please use only numeric values');
+      return;
+    } else if (customer.phoneNumber.length < MIN_PHONE_NUMBER_LENGTH) {
+      setInvalidPhoneNumberText('This phone number is too short');
+      return;
+    } else if (MAX_PHONE_NUMBER_LENGTH < customer.phoneNumber.length) {
+      setInvalidPhoneNumberText('This phone number is too long');
+      return;
+    }
+
     setBookingConfirmationModal(true);
   }
 
@@ -114,13 +131,19 @@ export function CustomerInfoForm() {
           <TextField
             className={classes.phoneNumber}
             value={customer.phoneNumber}
-            type="phone"
+            type="tel"
             label="Phone number"
             variant="outlined"
+            helperText={invalidPhoneNumberText}
+            error={invalidPhoneNumberText.length > 0}
             required
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setCustomer({ ...customer, phoneNumber: e.target.value })
-            }
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              setInvalidPhoneNumberText('');
+              if (isNaN(Number(e.target.value))) {
+                return;
+              }
+              setCustomer({ ...customer, phoneNumber: e.target.value.trim() });
+            }}
           />
         </div>
         <TextField
