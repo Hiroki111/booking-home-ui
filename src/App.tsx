@@ -2,7 +2,7 @@ import { SnackbarProvider } from 'notistack';
 import { Grow } from '@material-ui/core';
 import { TransitionProps } from '@material-ui/core/transitions';
 
-import { RootRouter } from './pages';
+import { RootRouter } from './components';
 import { RootThemeProvider } from './theme/RootThemeProvider';
 
 export default function App() {

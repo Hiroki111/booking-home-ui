@@ -1,9 +1,9 @@
 import { RouteComponentProps } from 'react-router-dom';
-import { Availability } from './pages/Home/HomeContent/Body/Availability';
-import { BookingConfirmation } from './pages/Home/HomeContent/Body/BookingConfirmation';
-import { CustomerInfoForm } from './pages/Home/HomeContent/Body/CustomerInfoForm';
-import { Service } from './pages/Home/HomeContent/Body/Service';
-import { Staff as StaffComponent } from './pages/Home/HomeContent/Body/Staff';
+import { Availability } from './components/Home/HomeContent/Body/Availability';
+import { BookingConfirmation } from './components/Home/HomeContent/Body/BookingConfirmation';
+import { CustomerInfoForm } from './components/Home/HomeContent/Body/CustomerInfoForm';
+import { Service } from './components/Home/HomeContent/Body/Service';
+import { Staff as StaffComponent } from './components/Home/HomeContent/Body/Staff';
 
 type Layout = 'split' | 'fullwidth';
 
