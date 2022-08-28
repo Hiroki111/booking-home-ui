@@ -3,6 +3,8 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { MemoryRouter } from 'react-router-dom';
 
 import { HomePageContext } from '../../../../../../../contexts/HomePageContext';
+import { BookingRequestError } from '../../../../../../../network/error';
+import { BookingRequestErrorCode, BOOKING_ERROR_MESSAGE } from '../../../../../../../staticData/errorMessage';
 import { createMockAvailableDate } from '../../../../../../../testUtil/mockData/availableDate';
 import { createMockAvailableTimeslot } from '../../../../../../../testUtil/mockData/availableTimeSlot';
 import { createMockCustomer } from '../../../../../../../testUtil/mockData/customer';
@@ -12,7 +14,7 @@ import { createMockStaff } from '../../../../../../../testUtil/mockData/staff';
 import { BookingModal } from '../BookingModal';
 
 jest.mock('../../../../../../../network/restApi', () => ({
-  bookAppointment: jest.fn().mockImplementation(() => null),
+  bookAppointment: jest.fn(),
 }));
 
 describe('BookingModal.tsx', () => {
@@ -62,6 +64,10 @@ describe('BookingModal.tsx', () => {
     );
   }
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should allow submission if the captcha response is not empty', async () => {
     renderBookingModal();
 
@@ -96,5 +102,26 @@ describe('BookingModal.tsx', () => {
     fireEvent.click(button);
 
     await waitFor(() => expect(restApi.bookAppointment).toHaveBeenCalledTimes(0));
+  });
+
+  it('should show an error message for incorrect security code', async () => {
+    global.console.error = jest.fn();
+    restApi.bookAppointment.mockImplementation(() => {
+      throw new BookingRequestError('API request failed', BookingRequestErrorCode.IncorrectSecurityCode);
+    });
+
+    renderBookingModal();
+
+    const inputNode = screen.getByPlaceholderText('Enter...');
+    fireEvent.change(inputNode, { target: { value: '123456' } });
+
+    const button = screen.getByText('BOOK');
+    fireEvent.click(button);
+
+    await waitFor(() =>
+      expect(screen.getByTestId('booking-error-message')).toHaveTextContent(
+        BOOKING_ERROR_MESSAGE[BookingRequestErrorCode.IncorrectSecurityCode],
+      ),
+    );
   });
 });

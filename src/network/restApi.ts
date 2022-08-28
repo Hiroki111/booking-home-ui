@@ -4,6 +4,7 @@ import { AuthenticateResponseBodyDto } from '../interfaces/authenticate';
 import { StaffDto } from '../interfaces/staff';
 import { ServiceTypeDto } from '../interfaces/serviceType';
 import { BookingRequestDto } from '../interfaces/booking';
+import { BookingRequestError } from './error';
 
 const defaultHeaders = {
   'Content-Type': 'application/json',
@@ -61,8 +62,6 @@ const restApi = {
   },
 
   bookAppointment: async function (data: BookingRequestDto): Promise<void> {
-    // TODO: Make a custom util for calling REST APIs, so that
-    // the catch block like the one below won't be necessary
     try {
       await axios({
         method: 'POST',
@@ -72,9 +71,12 @@ const restApi = {
       });
     } catch (error: any) {
       if (error.isAxiosError) {
-        throw new Error(error.response.data.message);
+        throw new BookingRequestError(
+          error?.response?.data?.message || 'API request failed',
+          error?.response?.data?.errorCode,
+        );
       }
-      throw new Error(error);
+      throw error;
     }
   },
 };

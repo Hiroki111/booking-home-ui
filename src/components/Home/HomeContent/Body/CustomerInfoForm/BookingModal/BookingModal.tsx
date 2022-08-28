@@ -14,6 +14,11 @@ import { BookingSummary } from './BookingSummary';
 import { SecurityCheck } from './SecurityCheck';
 import { useStyles } from './useStyles';
 import { BookingRequestDto } from '../../../../../../interfaces/booking';
+import {
+  BookingRequestErrorCode,
+  BOOKING_ERROR_MESSAGE,
+  GENERIC_TECHNICAL_ERROR_MESSAGE,
+} from '../../../../../../staticData/errorMessage';
 
 interface Props {
   isOpen: boolean;
@@ -61,6 +66,13 @@ export function BookingModal({ isOpen, handleClose }: Props) {
     } as BookingRequestDto);
   }
 
+  function getErrorMessage(error: any) {
+    if (BOOKING_ERROR_MESSAGE.hasOwnProperty(error.errorCode)) {
+      return BOOKING_ERROR_MESSAGE[error.errorCode as BookingRequestErrorCode];
+    }
+    return GENERIC_TECHNICAL_ERROR_MESSAGE;
+  }
+
   return (
     <Modal className={classes.root} open={isOpen} onClose={handleClose} closeAfterTransition>
       <Fade in={isOpen}>
@@ -73,7 +85,7 @@ export function BookingModal({ isOpen, handleClose }: Props) {
           {createAppointmentMutation.error instanceof Error && (
             <Alert severity="error" className={classes.alert}>
               <AlertTitle>Error</AlertTitle>
-              {createAppointmentMutation.error.message}
+              <div data-testid="booking-error-message">{getErrorMessage(createAppointmentMutation.error)}</div>
             </Alert>
           )}
           <div className={classes.buttonContainer}>
