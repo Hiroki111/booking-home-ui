@@ -64,18 +64,24 @@ describe('BookingModal.tsx', () => {
     );
   }
 
+  function enterSecurityCode() {
+    const inputNode = screen.getByPlaceholderText('Enter...');
+    fireEvent.change(inputNode, { target: { value: '123456' } });
+  }
+
+  function submitBookingRequest() {
+    const button = screen.getByText('BOOK');
+    fireEvent.click(button);
+  }
+
   afterEach(() => {
     jest.clearAllMocks();
   });
 
   it('should allow submission if the captcha response is not empty', async () => {
     renderBookingModal();
-
-    const inputNode = screen.getByPlaceholderText('Enter...');
-    fireEvent.change(inputNode, { target: { value: '123456' } });
-
-    const button = screen.getByText('BOOK');
-    fireEvent.click(button);
+    enterSecurityCode();
+    submitBookingRequest();
 
     await waitFor(() =>
       expect(restApi.bookAppointment).toHaveBeenCalledWith({
@@ -97,31 +103,27 @@ describe('BookingModal.tsx', () => {
 
   it('should NOT allow submission if the captcha response is empty', async () => {
     renderBookingModal();
-
-    const button = screen.getByText('BOOK');
-    fireEvent.click(button);
+    // Not entering the security code
+    submitBookingRequest();
 
     await waitFor(() => expect(restApi.bookAppointment).toHaveBeenCalledTimes(0));
   });
 
-  it('should show an error message for incorrect security code', async () => {
-    global.console.error = jest.fn();
-    restApi.bookAppointment.mockImplementation(() => {
-      throw new BookingRequestError('API request failed', BookingRequestErrorCode.IncorrectSecurityCode);
-    });
+  it.each(Object.values(BookingRequestErrorCode))(
+    'should show an error message for each request error code',
+    async (errorCode: BookingRequestErrorCode) => {
+      global.console.error = jest.fn();
+      restApi.bookAppointment.mockImplementation(() => {
+        throw new BookingRequestError('API request failed', errorCode);
+      });
 
-    renderBookingModal();
+      renderBookingModal();
+      enterSecurityCode();
+      submitBookingRequest();
 
-    const inputNode = screen.getByPlaceholderText('Enter...');
-    fireEvent.change(inputNode, { target: { value: '123456' } });
-
-    const button = screen.getByText('BOOK');
-    fireEvent.click(button);
-
-    await waitFor(() =>
-      expect(screen.getByTestId('booking-error-message')).toHaveTextContent(
-        BOOKING_ERROR_MESSAGE[BookingRequestErrorCode.IncorrectSecurityCode],
-      ),
-    );
-  });
+      await waitFor(() =>
+        expect(screen.getByTestId('booking-error-message')).toHaveTextContent(BOOKING_ERROR_MESSAGE[errorCode]),
+      );
+    },
+  );
 });
