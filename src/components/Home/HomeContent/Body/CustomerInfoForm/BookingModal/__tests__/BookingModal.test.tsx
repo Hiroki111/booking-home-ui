@@ -110,7 +110,7 @@ describe('BookingModal.tsx', () => {
   });
 
   it.each(Object.values(BookingRequestErrorCode))(
-    'should show an error message for each request error code',
+    'should show an error message for %s',
     async (errorCode: BookingRequestErrorCode) => {
       global.console.error = jest.fn();
       restApi.bookAppointment.mockImplementation(() => {
