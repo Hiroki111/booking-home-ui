@@ -12,11 +12,17 @@ export enum BookingRequestErrorCode {
 export const BOOKING_ERROR_MESSAGE = {
   [BookingRequestErrorCode.IncorrectSecurityCode]: 'Wrong security code was provided.',
   [BookingRequestErrorCode.StaffCannotDoSelectedServices]:
-    'Due to real-time availability, the staff is no longer available for the selected service(s). Please choose different staff.',
+    'Due to real-time availability, the staff is no longer available for the selected service(s).',
   [BookingRequestErrorCode.TimeslotOverlapping]:
-    'Due to real-time availability, the staff is no longer available for the selected timeslot. Please choose a different slot.',
+    'Due to real-time availability, the staff is no longer available for the selected timeslot.',
   [BookingRequestErrorCode.StaffUnavailableOnSelectedDateAndTime]:
-    'Due to real-time availability, the staff is no longer available for the timeslot. Please choose a different timeslot or staff.',
+    'Due to real-time availability, the staff is no longer available for the timeslot.',
   [BookingRequestErrorCode.TimeslotTooShortForSelectedServices]:
-    'Due to real-time availability, your request is no longer available. Please choose a different timeslot',
+    'Due to real-time availability, your request is no longer available. Please choose a different timeslot.',
 };
+
+export const staffAvailabilityErrors = [
+  BookingRequestErrorCode.StaffCannotDoSelectedServices,
+  BookingRequestErrorCode.StaffUnavailableOnSelectedDateAndTime,
+  BookingRequestErrorCode.TimeslotOverlapping,
+];

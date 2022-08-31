@@ -4,7 +4,12 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { HomePageContext } from '../../../../../../../contexts/HomePageContext';
 import { BookingRequestError } from '../../../../../../../network/error';
-import { BookingRequestErrorCode, BOOKING_ERROR_MESSAGE } from '../../../../../../../staticData/errorMessage';
+import { ROUTES } from '../../../../../../../routes';
+import {
+  BookingRequestErrorCode,
+  BOOKING_ERROR_MESSAGE,
+  staffAvailabilityErrors,
+} from '../../../../../../../staticData/errorMessage';
 import { createMockAvailableDate } from '../../../../../../../testUtil/mockData/availableDate';
 import { createMockAvailableTimeslot } from '../../../../../../../testUtil/mockData/availableTimeSlot';
 import { createMockCustomer } from '../../../../../../../testUtil/mockData/customer';
@@ -13,8 +18,16 @@ import { createMockServiceDto } from '../../../../../../../testUtil/mockData/ser
 import { createMockStaff } from '../../../../../../../testUtil/mockData/staff';
 import { BookingModal } from '../BookingModal';
 
+const mockHistoryPush = jest.fn();
+
 jest.mock('../../../../../../../network/restApi', () => ({
   bookAppointment: jest.fn(),
+}));
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useHistory: () => ({
+    push: mockHistoryPush,
+  }),
 }));
 
 describe('BookingModal.tsx', () => {
@@ -42,6 +55,9 @@ describe('BookingModal.tsx', () => {
     services: mockSelectedServices,
     availableDates: [mockSelectedDate],
   });
+  const mockSetSelectedTimeSlot = jest.fn();
+  const mockSetSelectedDate = jest.fn();
+  const mockSetSelectedStaff = jest.fn();
 
   function renderBookingModal() {
     render(
@@ -55,6 +71,9 @@ describe('BookingModal.tsx', () => {
               selectedStaff: mockSelectedStaff,
               selectedDate: mockSelectedDate,
               selectedTimeSlot: mockSelectedTimeslot,
+              setSelectedTimeSlot: mockSetSelectedTimeSlot,
+              setSelectedDate: mockSetSelectedDate,
+              setSelectedStaff: mockSetSelectedStaff,
             }}
           >
             <BookingModal isOpen={true} handleClose={() => {}} />
@@ -109,21 +128,50 @@ describe('BookingModal.tsx', () => {
     await waitFor(() => expect(restApi.bookAppointment).toHaveBeenCalledTimes(0));
   });
 
-  it.each(Object.values(BookingRequestErrorCode))(
-    'should show an error message for %s',
-    async (errorCode: BookingRequestErrorCode) => {
+  describe('When booking request fails', () => {
+    function triggerBookingRequestError(errorCode: BookingRequestErrorCode) {
       global.console.error = jest.fn();
       restApi.bookAppointment.mockImplementation(() => {
         throw new BookingRequestError('API request failed', errorCode);
       });
+    }
 
-      renderBookingModal();
-      enterSecurityCode();
-      submitBookingRequest();
+    it.each(Object.values(BookingRequestErrorCode))(
+      'should show an error message for %s',
+      async (errorCode: BookingRequestErrorCode) => {
+        triggerBookingRequestError(errorCode);
 
-      await waitFor(() =>
-        expect(screen.getByTestId('booking-error-message')).toHaveTextContent(BOOKING_ERROR_MESSAGE[errorCode]),
-      );
-    },
-  );
+        renderBookingModal();
+        enterSecurityCode();
+        submitBookingRequest();
+
+        await waitFor(() =>
+          expect(screen.getByTestId('booking-error-message')).toHaveTextContent(BOOKING_ERROR_MESSAGE[errorCode]),
+        );
+      },
+    );
+
+    it.each(staffAvailabilityErrors)(
+      'should show a link to staff list if %s is returned by booking request',
+      async (errorCode: BookingRequestErrorCode) => {
+        triggerBookingRequestError(errorCode);
+
+        renderBookingModal();
+        enterSecurityCode();
+        submitBookingRequest();
+
+        await waitFor(() => expect(screen.getByTestId('staff-availability-error-message')).toBeInTheDocument());
+
+        const linkToStaffList = screen.getByTestId('staff-availability-error-message');
+        fireEvent.click(linkToStaffList);
+
+        await waitFor(() => {
+          expect(mockSetSelectedTimeSlot).toHaveBeenCalledWith({});
+          expect(mockSetSelectedDate).toHaveBeenCalledWith({});
+          expect(mockSetSelectedStaff).toHaveBeenCalledWith({});
+          expect(mockHistoryPush).toHaveBeenCalledWith(ROUTES.staff);
+        });
+      },
+    );
+  });
 });

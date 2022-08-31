@@ -18,7 +18,10 @@ import {
   BookingRequestErrorCode,
   BOOKING_ERROR_MESSAGE,
   GENERIC_TECHNICAL_ERROR_MESSAGE,
+  staffAvailabilityErrors,
 } from '../../../../../../staticData/errorMessage';
+import { AvailableTimeSlotDto } from '../../../../../../interfaces/availableTimeSlot';
+import { AvailableDate, StaffDto } from '../../../../../../interfaces/staff';
 
 interface Props {
   isOpen: boolean;
@@ -36,6 +39,9 @@ export function BookingModal({ isOpen, handleClose }: Props) {
     customer,
     resetAppointmentData,
     setShowBookingConfirmation,
+    setSelectedTimeSlot,
+    setSelectedDate,
+    setSelectedStaff,
   } = useHomePageContext();
   const history = useHistory();
   const createAppointmentMutation = useCreateAppointmentMutation();
@@ -73,6 +79,26 @@ export function BookingModal({ isOpen, handleClose }: Props) {
     return GENERIC_TECHNICAL_ERROR_MESSAGE;
   }
 
+  function showRedirectLinkToStaffList(error: any) {
+    if (!staffAvailabilityErrors.includes(error?.errorCode)) {
+      return null;
+    }
+    return (
+      <span
+        data-testid="staff-availability-error-message"
+        className={classes.redirectLink}
+        onClick={() => {
+          setSelectedTimeSlot({} as AvailableTimeSlotDto);
+          setSelectedDate({} as AvailableDate);
+          setSelectedStaff({} as StaffDto);
+          history.push(ROUTES.staff);
+        }}
+      >
+        Please choose different staff from here.
+      </span>
+    );
+  }
+
   return (
     <Modal className={classes.root} open={isOpen} onClose={handleClose} closeAfterTransition>
       <Fade in={isOpen}>
@@ -86,6 +112,7 @@ export function BookingModal({ isOpen, handleClose }: Props) {
             <Alert severity="error" className={classes.alert}>
               <AlertTitle>Error</AlertTitle>
               <div data-testid="booking-error-message">{getErrorMessage(createAppointmentMutation.error)}</div>
+              <>{showRedirectLinkToStaffList(createAppointmentMutation.error)}</>
             </Alert>
           )}
           <div className={classes.buttonContainer}>

@@ -29,4 +29,11 @@ export const useStyles = makeStyles((theme) => ({
   alert: {
     marginTop: '12px',
   },
+  redirectLink: {
+    fontWeight: 'bold',
+    cursor: 'pointer',
+    '&:hover': {
+      textDecoration: 'underline',
+    },
+  },
 }));
