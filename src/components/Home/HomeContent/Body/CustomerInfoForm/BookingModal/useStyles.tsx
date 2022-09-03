@@ -12,6 +12,7 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     width: '90vw',
     maxWidth: '900px',
+    maxHeight: '100vh',
     minHeight: '500px',
     overflow: 'auto',
     backgroundColor: theme.palette.background.paper,
