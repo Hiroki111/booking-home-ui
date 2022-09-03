@@ -9,23 +9,18 @@ import { useHomePageContext } from '../../../../../../contexts/HomePageContext';
 import { AvailableTimeSlotDto } from '../../../../../../interfaces/availableTimeSlot';
 import { ROUTES } from '../../../../../../routes';
 import { NO_PREFERENCE_STAFF } from '../../../../../../staticData/staff';
-import { useRegularStaffQuery } from '../../../../../../queries/staff';
 import { findFirstAvailableStaff } from '../../../../../../services/staff';
+import { StaffDto } from '../../../../../../interfaces/staff';
 
-function AvailableTime(_props: any, ref: ForwardedRef<HTMLDivElement>) {
+interface Props {
+  staffList: StaffDto[];
+}
+
+function AvailableTime({ staffList }: Props, ref: ForwardedRef<HTMLDivElement>) {
   const history = useHistory();
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
-  const {
-    selectedStaff,
-    selectedDate,
-    selectedServices,
-    setSelectedTimeSlot,
-    setSelectedStaff,
-    setSelectedDate,
-  } = useHomePageContext();
-  const regularStaffQuery = useRegularStaffQuery(selectedServices);
-  const staffList = regularStaffQuery.data || [];
+  const { selectedStaff, selectedDate, setSelectedTimeSlot, setSelectedStaff, setSelectedDate } = useHomePageContext();
 
   function handleClickTimeSlot(availableTimeSlot: AvailableTimeSlotDto) {
     if (selectedStaff.id !== NO_PREFERENCE_STAFF.id) {
@@ -34,11 +29,12 @@ function AvailableTime(_props: any, ref: ForwardedRef<HTMLDivElement>) {
       setActualStaffAndTimeForNonPreferenceStaff(availableTimeSlot);
     }
 
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     history.push(ROUTES.customerInfoForm);
   }
 
   function setActualStaffAndTimeForNonPreferenceStaff(availableTimeSlot: AvailableTimeSlotDto) {
-    const firstAvailableStaff = findFirstAvailableStaff(staffList, selectedDate, availableTimeSlot);
+    const firstAvailableStaff = findFirstAvailableStaff(staffList || [], selectedDate, availableTimeSlot);
     const firstAvailableStaffDate = firstAvailableStaff?.availableDates?.find(
       (availableDate) => availableDate.date === selectedDate.date,
     );
@@ -47,7 +43,7 @@ function AvailableTime(_props: any, ref: ForwardedRef<HTMLDivElement>) {
       return;
     }
 
-    // Note: The order of the setter functions below matters due to bookingStateReducer
+    // Note: The order of the following setter functions matters due to bookingStateReducer
     setSelectedStaff(firstAvailableStaff);
     setSelectedDate(firstAvailableStaffDate);
     setSelectedTimeSlot(availableTimeSlot);
@@ -67,6 +63,7 @@ function AvailableTime(_props: any, ref: ForwardedRef<HTMLDivElement>) {
       </Paper>
       {selectedDate.availableTimeSlots.map((availableTimeSlot, i) => (
         <Paper
+          data-testid={`timeslot-panel-${i}`}
           key={i}
           className={classes.timeSlot}
           onClick={() => handleClickTimeSlot(availableTimeSlot)}

@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import renderer from 'react-test-renderer';
 import { MemoryRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -22,10 +22,12 @@ jest.mock('../../../../../../services/routing', () => ({
 }));
 
 jest.mock('../../../../../../network/restApi', () => ({
-  fetchStaffList: jest.fn().mockImplementation(() => null),
+  fetchStaffList: jest.fn(),
 }));
 
 describe('Availability.tsx', () => {
+  let restApi: any;
+  const service = createMockServiceDto();
   function getAvailabilityComponent(contextValue: HomePageContextInterface) {
     return (
       <MemoryRouter>
@@ -38,18 +40,28 @@ describe('Availability.tsx', () => {
     );
   }
 
+  beforeEach(() => {
+    restApi = require('../../../../../../network/restApi');
+    restApi.fetchStaffList.mockImplementation(() => [createMockStaff()]);
+  });
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should scroll into AvailableTime when the selected date gets its value', () => {
     const mockedScrollIntoView = jest.fn();
     window.HTMLElement.prototype.scrollIntoView = mockedScrollIntoView;
 
     let contextValue = createMockHomePageContextValue({
       selectedDate: {} as AvailableDate,
+      selectedServices: [service],
     });
     render(getAvailabilityComponent(contextValue));
     expect(mockedScrollIntoView).not.toBeCalled();
 
     contextValue = createMockHomePageContextValue({
       selectedDate: createMockAvailableDate(),
+      selectedServices: [service],
     });
     render(getAvailabilityComponent(contextValue));
     expect(mockedScrollIntoView).toBeCalled();

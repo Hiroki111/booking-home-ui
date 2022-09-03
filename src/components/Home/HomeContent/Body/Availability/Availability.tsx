@@ -11,14 +11,17 @@ import { NavigationBar } from './NavigationBar';
 import { useHomePageContext } from '../../../../../contexts/HomePageContext';
 import { getPathToSkippedPage } from '../../../../../services/routing';
 import { useStyles } from './useStyles';
+import { useRegularStaffQuery } from '../../../../../queries/staff';
+import { ServerErrorAlert } from '../ServerErrorAlert';
 
 export function Availability() {
   const classes = useStyles();
   const refToAvailableTime: React.RefObject<HTMLDivElement> = createRef();
-  const { selectedDate, bookingCompletionState } = useHomePageContext();
+  const { selectedDate, bookingCompletionState, selectedServices } = useHomePageContext();
   const location = useLocation();
   const pathToSkippedPage = getPathToSkippedPage(location.pathname, bookingCompletionState);
   const initialDate = selectedDate?.date || dayjs().format('YYYY-MM-DD');
+  const { data: staffList, isError: isFetchingStaffListFailed } = useRegularStaffQuery(selectedServices);
 
   useEffect(() => {
     if (selectedDate && refToAvailableTime.current) {
@@ -32,6 +35,8 @@ export function Availability() {
 
   if (pathToSkippedPage) {
     return <Redirect to={pathToSkippedPage} />;
+  } else if (isFetchingStaffListFailed) {
+    return <ServerErrorAlert />;
   }
 
   return (
@@ -44,7 +49,7 @@ export function Availability() {
           <Calendar />
         </Scheduler>
       </Paper>
-      {selectedDate?.date && <AvailableTime ref={refToAvailableTime} />}
+      {selectedDate?.date && <AvailableTime ref={refToAvailableTime} staffList={staffList || []} />}
     </>
   );
 }
