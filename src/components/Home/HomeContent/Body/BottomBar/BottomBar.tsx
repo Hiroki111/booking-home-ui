@@ -19,6 +19,7 @@ export function BottomBar() {
   const regularStaffList = regularStaffQuery.data || [];
 
   function handleOnClickBooking() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     history.push(ROUTES.staff);
   }
 

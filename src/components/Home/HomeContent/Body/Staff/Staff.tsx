@@ -19,6 +19,7 @@ export function Staff() {
   const staffList = allStaffQuery.data || [];
 
   function handleOnClickStaff(staff: StaffDto | NoPreferenceStaff) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     setSelectedStaff(staff);
     history.push(ROUTES.availability);
   }
