@@ -31,6 +31,7 @@ interface Props {
 export function BookingModal({ isOpen, handleClose }: Props) {
   const classes = useStyles();
   const [captchaResonse, setCaptchaResonse] = useState('');
+  const [isBookingFailed, setIsBookingFailed] = useState(false);
   const {
     selectedServices,
     selectedStaff,
@@ -54,9 +55,16 @@ export function BookingModal({ isOpen, handleClose }: Props) {
     }
   }, [createAppointmentMutation.isSuccess, history, resetAppointmentData, setShowBookingConfirmation]);
 
-  function handleBookAppointment() {
-    // validate phone number
+  useEffect(() => {
+    if (createAppointmentMutation.isError) {
+      setIsBookingFailed(true);
+    }
+  }, [createAppointmentMutation.isError, setIsBookingFailed]);
 
+  function handleBookAppointment() {
+    setIsBookingFailed(false);
+
+    // validate phone number
     createAppointmentMutation.mutate({
       ...customer,
       countryPhoneCode: undefined,
@@ -99,8 +107,13 @@ export function BookingModal({ isOpen, handleClose }: Props) {
     );
   }
 
+  function handleCloseModal() {
+    setIsBookingFailed(false);
+    handleClose();
+  }
+
   return (
-    <Modal className={classes.root} open={isOpen} onClose={handleClose} closeAfterTransition>
+    <Modal className={classes.root} open={isOpen} onClose={handleCloseModal} closeAfterTransition>
       <Fade in={isOpen}>
         <div className={classes.contentWrapper}>
           <BookingSummary />
@@ -108,7 +121,7 @@ export function BookingModal({ isOpen, handleClose }: Props) {
             handleChangeCaptchaResponse={(e: React.ChangeEvent<HTMLInputElement>) => setCaptchaResonse(e.target.value)}
             captchaResonse={captchaResonse}
           />
-          {createAppointmentMutation.error instanceof Error && (
+          {isBookingFailed && createAppointmentMutation.error instanceof Error && (
             <Alert severity="error" className={classes.alert}>
               <AlertTitle>Error</AlertTitle>
               <div data-testid="booking-error-message">{getErrorMessage(createAppointmentMutation.error)}</div>
@@ -116,7 +129,7 @@ export function BookingModal({ isOpen, handleClose }: Props) {
             </Alert>
           )}
           <div className={classes.buttonContainer}>
-            <Button variant="outlined" onClick={handleClose}>
+            <Button variant="outlined" onClick={handleCloseModal}>
               CANCEL
             </Button>
             <Button
