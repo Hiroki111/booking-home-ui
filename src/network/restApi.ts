@@ -72,6 +72,8 @@ const restApi = {
   },
 
   bookAppointment: async function (data: BookingRequestDto): Promise<void> {
+    // TODO: remove it
+    await new Promise((res) => setTimeout(res, 1000));
     try {
       await axios({
         method: 'POST',
