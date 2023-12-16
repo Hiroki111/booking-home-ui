@@ -28,7 +28,11 @@ export function SecurityCheck({ handleChangeCaptchaResponse, captchaResonse }: P
         to refresh the code)
       </p>
       <div className={classes.captchaWrapper}>
-        <div dangerouslySetInnerHTML={{ __html: captchaChallenge }} />
+        {fetchCaptchaQuery.isFetching ? (
+          <div className={classes.code}>Loading...</div>
+        ) : (
+          <div className={classes.code} dangerouslySetInnerHTML={{ __html: captchaChallenge }} />
+        )}
         <TextField
           variant="outlined"
           value={captchaResonse}
