@@ -84,11 +84,17 @@ const mockAvailableDates = [
 ];
 
 export function getMockAvailableDates() {
-  return mockAvailableDates.map((availableDate, i) => ({
-    id: i,
-    date: availableDate.date,
-    availableTimeSlots: getAvailableTimeslots(availableDate.start_time, availableDate.end_time),
-  }));
+  return mockAvailableDates
+    .filter((availableDate) => {
+      const currentDate = dayjs();
+      const dateToCompare = dayjs(availableDate.date, 'YYYY-MM-DD');
+      return dateToCompare.isAfter(currentDate);
+    })
+    .map((availableDate, i) => ({
+      id: i,
+      date: availableDate.date,
+      availableTimeSlots: getAvailableTimeslots(availableDate.start_time, availableDate.end_time),
+    }));
 }
 
 export function getAvailableTimeslots(startTime: string, endTime: string) {
