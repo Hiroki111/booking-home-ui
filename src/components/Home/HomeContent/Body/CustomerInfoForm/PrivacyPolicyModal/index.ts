@@ -1,1 +1,0 @@
-export { PrivacyPolicyModal } from './PrivacyPolicyModal';
