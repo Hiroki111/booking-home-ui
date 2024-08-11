@@ -1,5 +1,5 @@
-function App() {
-  return <div className="App">app</div>;
-}
+import { RootRouter } from './components/RootRouter';
 
-export default App;
+export default function App() {
+  return <RootRouter />;
+}
