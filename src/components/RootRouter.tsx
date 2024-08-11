@@ -12,8 +12,8 @@ export function RootRouter() {
             <Route path={path} key={path} element={<Home />} />
           ),
         )}
+        <Route path="*" element={<Navigate to={ROUTES.service} replace />} />
       </Routes>
-      <Navigate to={ROUTES.service} replace />
     </Router>
   );
 }
