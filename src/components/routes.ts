@@ -1,9 +1,9 @@
-import { Availability } from './Home/HomeContent/Body/Availability';
-import { BookingConfirmation } from './Home/HomeContent/Body/BookingConfirmation';
-import { CustomerInfoForm } from './Home/HomeContent/Body/CustomerInfoForm';
-import { Service } from './Home/HomeContent/Body/Service';
+import { Availability } from './Home/Body/Availability';
+import { BookingConfirmation } from './Home/Body/BookingConfirmation';
+import { CustomerInfoForm } from './Home/Body/CustomerInfoForm';
+import { Service } from './Home/Body/Service';
 import React from 'react';
-import { Staff } from './Home/HomeContent/Body/Staff';
+import { Staff } from './Home/Body/Staff';
 
 type Layout = 'split' | 'fullwidth';
 

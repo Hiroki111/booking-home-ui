@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 
 import { BottomBar } from './BottomBar';
-import { splitComponentRoutes, fullWidthComponentRoutes } from '../../../routes';
+import { splitComponentRoutes, fullWidthComponentRoutes } from '../../routes';
 
 export function Body() {
   const fetchServiceTypesQuery = { isLoading: false, isError: false };

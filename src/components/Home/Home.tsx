@@ -1,6 +1,6 @@
 import { BrowserRouter } from 'react-router-dom';
-import { Header } from './HomeContent/Header';
-import { Body } from './HomeContent/Body';
+import { Header } from './Header';
+import { Body } from './Body';
 
 export function Home() {
   return (
