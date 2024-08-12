@@ -1,49 +1,55 @@
+import { Availability } from './Home/HomeContent/Body/Availability';
+import { BookingConfirmation } from './Home/HomeContent/Body/BookingConfirmation';
+import { CustomerInfoForm } from './Home/HomeContent/Body/CustomerInfoForm';
+import { Service } from './Home/HomeContent/Body/Service';
+import React from 'react';
+import { Staff } from './Home/HomeContent/Body/Staff';
+
 type Layout = 'split' | 'fullwidth';
 
 export interface Route {
   path: string;
-  component?: React.FC;
+  component: React.FC;
   layout: Layout;
-  exact?: boolean;
 }
 
-const service: Route = {
+const root: Route = {
   path: '/',
-  //   component: Service,
-  component: undefined,
+  component: Service,
   layout: 'split',
-  exact: true,
+};
+
+const service: Route = {
+  path: 'service',
+  component: Service,
+  layout: 'split',
 };
 
 const staff: Route = {
-  path: '/staff',
-  // component: StaffComponent,
-  component: undefined,
+  path: 'staff',
+  component: Staff,
   layout: 'split',
 };
 
 const availability: Route = {
-  path: '/availability',
-  // component: Availability,
-  component: undefined,
+  path: 'availability',
+  component: Availability,
   layout: 'split',
 };
 
 const customerInfoForm: Route = {
-  path: '/customer-info-form',
-  // component: CustomerInfoForm,
-  component: undefined,
+  path: 'customer-info-form',
+  component: CustomerInfoForm,
   layout: 'split',
 };
 
 const bookingConfirmation: Route = {
-  path: '/booking-confirmation',
-  // component: BookingConfirmation,
-  component: undefined,
+  path: 'booking-confirmation',
+  component: BookingConfirmation,
   layout: 'fullwidth',
 };
 
-const frontEndRoutes = [service, staff, availability, customerInfoForm, bookingConfirmation];
+const frontEndRoutes = [root, service, staff, availability, customerInfoForm, bookingConfirmation];
 
 export const splitComponentRoutes = frontEndRoutes.filter((route) => route.layout === 'split');
 
@@ -55,6 +61,4 @@ export const ROUTES = {
   availability: availability.path,
   customerInfoForm: customerInfoForm.path,
   bookingConfirmation: bookingConfirmation.path,
-  login: '/login',
-  backoffice: '/backoffice',
 };

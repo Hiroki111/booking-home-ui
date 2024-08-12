@@ -1,5 +1,5 @@
-import { RootRouter } from './components/RootRouter';
+import { Home } from './components/Home';
 
 export default function App() {
-  return <RootRouter />;
+  return <Home />;
 }

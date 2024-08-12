@@ -1,7 +1,8 @@
-import { Route, BrowserRouter as Router, Routes, Navigate } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
-import { Home } from './Home/Home';
+import { Home } from './Home';
 import { ROUTES } from './routes';
+import { NoMatch } from './Home/HomeContent/Body/NoMatch ';
 
 export function RootRouter() {
   return (
@@ -12,7 +13,7 @@ export function RootRouter() {
             <Route path={path} key={path} element={<Home />} />
           ),
         )}
-        <Route path="*" element={<Navigate to={ROUTES.service} replace />} />
+        <Route path="*" element={<NoMatch />} />
       </Routes>
     </Router>
   );
