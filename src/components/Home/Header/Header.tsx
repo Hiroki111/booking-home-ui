@@ -3,7 +3,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import { ROUTES } from '../../routes';
+import { ROUTES } from '../../../routes';
 import { useStyles } from './useStyles';
 import { useHomePageContext } from '../../../contexts/HomePageContext';
 import { useIsSmallWindow } from '../../../hooks/window';

@@ -1,4 +1,4 @@
-import { ROUTES } from '../components/routes';
+import { ROUTES } from '../routes';
 import { BookingCompletionState } from '../contexts/HomePageContext';
 
 export function getPathToSkippedPage(

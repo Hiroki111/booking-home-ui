@@ -1,9 +1,8 @@
-import { Availability } from './Home/Body/Availability';
-import { BookingConfirmation } from './Home/Body/BookingConfirmation';
-import { CustomerInfoForm } from './Home/Body/CustomerInfoForm';
-import { Service } from './Home/Body/Service';
-import React from 'react';
-import { Staff } from './Home/Body/Staff';
+import { Availability } from './components/Home/Body/Availability';
+import { BookingConfirmation } from './components/Home/Body/BookingConfirmation';
+import { CustomerInfoForm } from './components/Home/Body/CustomerInfoForm';
+import { Service } from './components/Home/Body/Service';
+import { Staff } from './components/Home/Body/Staff';
 
 type Layout = 'split' | 'fullwidth';
 
