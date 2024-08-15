@@ -7,18 +7,18 @@ import { createMockHomePageContextValue } from '../../../../../testUtil/mockData
 import { createMockServiceDto } from '../../../../../testUtil/mockData/service';
 import { createMockServiceTypeDto } from '../../../../../testUtil/mockData/serviceType';
 import { createMockStaff } from '../../../../../testUtil/mockData/staff';
+import restApi from '../../../../../network/restApi';
 
-jest.mock('../../../../../../network/restApi', () => ({
+jest.mock('../../../../../network/restApi', () => ({
   fetchServiceTypes: jest.fn(),
   fetchStaffList: jest.fn(),
 }));
 
-jest.mock('../../../../../../staticData/service', () => ({
+jest.mock('../../../../../staticData/service', () => ({
   MAX_SERVICE_SELECTION_NUMBER: 3,
 }));
 
 describe('Service.tsx', () => {
-  const restApi = require('../../../../../../network/restApi');
   const mockServiceTypes = [
     createMockServiceTypeDto({ id: 1, name: 'Featured' }),
     createMockServiceTypeDto({ id: 2, name: 'Hands and Feet' }),
@@ -36,7 +36,7 @@ describe('Service.tsx', () => {
   }
 
   it('should show service type names in the menu bar and container', async () => {
-    restApi.fetchServiceTypes.mockImplementation(() => mockServiceTypes);
+    restApi.fetchServiceTypes = jest.fn().mockImplementation(() => mockServiceTypes);
     renderService(createMockHomePageContextValue());
 
     await waitFor(() => screen.getAllByText('Featured'));
@@ -45,23 +45,23 @@ describe('Service.tsx', () => {
   });
 
   it('should notify the user that there is no service available', async () => {
-    restApi.fetchServiceTypes.mockImplementation(() => []);
+    restApi.fetchServiceTypes = jest.fn().mockImplementation(() => []);
     renderService(createMockHomePageContextValue());
 
     await waitFor(() => expect(screen.getByText('No service is available at this moment')).toBeInTheDocument());
   });
 
   it('should notify the user that there is not enough staff for the selected services', async () => {
-    restApi.fetchServiceTypes.mockImplementation(() => mockServiceTypes);
-    restApi.fetchStaffList.mockImplementation(() => []);
+    restApi.fetchServiceTypes = jest.fn().mockImplementation(() => mockServiceTypes);
+    restApi.fetchStaffList = jest.fn().mockImplementation(() => []);
     renderService(createMockHomePageContextValue());
 
     await waitFor(() => expect(screen.getByText(ALERT_TEXT_STAFF_UNAVAILABLE)).toBeInTheDocument());
   });
 
   it('should notify the user when the selection limit is reached', async () => {
-    restApi.fetchServiceTypes.mockImplementation(() => mockServiceTypes);
-    restApi.fetchStaffList.mockImplementation(() => mockStaffList);
+    restApi.fetchServiceTypes = jest.fn().mockImplementation(() => mockServiceTypes);
+    restApi.fetchStaffList = jest.fn().mockImplementation(() => mockStaffList);
 
     renderService(
       createMockHomePageContextValue({

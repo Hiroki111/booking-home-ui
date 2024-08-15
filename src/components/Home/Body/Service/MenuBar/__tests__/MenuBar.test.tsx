@@ -5,13 +5,13 @@ import { MenuBar } from '../MenuBar';
 import { HomePageContext } from '../../../../../../contexts/HomePageContext';
 import { createMockHomePageContextValue } from '../../../../../../testUtil/mockData/HomePageContext';
 import { createMockServiceTypeDto } from '../../../../../../testUtil/mockData/serviceType';
+import restApi from '../../../../../../network/restApi';
 
-jest.mock('../../../../../../../network/restApi', () => ({
+jest.mock('../../../../../../network/restApi', () => ({
   fetchServiceTypes: jest.fn(),
 }));
 
 describe('MenuBar.tsx', () => {
-  const restApi = require('../../../../../../../network/restApi');
   const mockServiceTypes = [
     createMockServiceTypeDto({ id: 1, name: 'Featured' }),
     createMockServiceTypeDto({ id: 2, name: 'Hands and Feet' }),
@@ -28,7 +28,7 @@ describe('MenuBar.tsx', () => {
   }
 
   it('should show service type names', async () => {
-    restApi.fetchServiceTypes.mockImplementation(() => mockServiceTypes);
+    restApi.fetchServiceTypes = jest.fn().mockImplementation(() => mockServiceTypes);
     renderMenuBar();
 
     await waitFor(() => screen.getAllByText('Featured'));
