@@ -3,13 +3,13 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import { ROUTES } from '../../../routes';
-import { useStyles } from './useStyles';
 import { useHomePageContext } from '../../../contexts/HomePageContext';
 import { useIsSmallWindow } from '../../../hooks/window';
 import { StaffDto, NoPreferenceStaff } from '../../../interfaces/staff';
+import { ROUTES } from '../../../routes';
 import { NO_PREFERENCE_STAFF } from '../../../staticData/staff';
 import { ServiceTabs } from './ServiceTabs';
+import { useStyles } from './useStyles';
 
 export function Header() {
   const classes = useStyles();
@@ -19,7 +19,7 @@ export function Header() {
   const navigate = useNavigate();
 
   function getCurrentStep() {
-    switch (location.pathname) {
+    switch (location.pathname.replaceAll('/', '')) {
       case ROUTES.service:
         return 1;
       case ROUTES.staff:
@@ -36,7 +36,7 @@ export function Header() {
   }
 
   function displayHeaderText(staff: StaffDto | NoPreferenceStaff) {
-    switch (location.pathname) {
+    switch (location.pathname.replaceAll('/', '')) {
       case ROUTES.service:
         return 'Select services';
       case ROUTES.staff:

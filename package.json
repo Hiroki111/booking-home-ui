@@ -37,7 +37,10 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "testing-library/prefer-find-by": "warn"
+    }
   },
   "browserslist": {
     "production": [

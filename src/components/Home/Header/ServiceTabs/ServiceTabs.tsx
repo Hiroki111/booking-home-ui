@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Tabs, Tab, Chip } from '@material-ui/core';
 
-import { useHomePageContext } from '../../../../contexts/HomePageContext';
 import { useStyles } from './useStyles';
+import { useHomePageContext } from '../../../../contexts/HomePageContext';
 import { useServiceTypesQuery } from '../../../../queries/serviceTypes';
 
 export function ServiceTabs() {
