@@ -1,11 +1,20 @@
 import { Route, Routes } from 'react-router-dom';
+import React from 'react';
 
 import { BottomBar } from './BottomBar';
 import { splitComponentRoutes, fullWidthComponentRoutes } from '../../../routes';
+import { useIsSmallWindow } from '../../../hooks/window';
+import { useServiceTypesQuery } from '../../../queries/serviceTypes';
+import { useStaffQuery } from '../../../queries/staff';
+import { useStyles } from './useStyles';
+import { Grid } from '@material-ui/core';
+import { Order } from './Order';
 
 export function Body() {
-  const fetchServiceTypesQuery = { isLoading: false, isError: false };
-  const fetchStaffListQuery = { isLoading: false, isError: false };
+  const classes = useStyles();
+  const isSmallWindow = useIsSmallWindow();
+  const fetchServiceTypesQuery = useServiceTypesQuery();
+  const fetchStaffListQuery = useStaffQuery();
 
   if (fetchServiceTypesQuery.isLoading) {
     return <div>loading...</div>;
@@ -16,35 +25,40 @@ export function Body() {
   }
 
   return (
-    <div>
-      <div>
+    <div className={classes.root}>
+      <Grid container spacing={4} className={classes.gridContainer}>
         <Routes>
           {splitComponentRoutes.map(({ path, component: Component }) => (
-            <Route
-              key={path}
-              path={path}
-              element={
-                <div>
-                  <Component />
-                </div>
-              }
-            />
+            <Route key={path} path={path} element={renderSplitComponent(Component, isSmallWindow)} />
           ))}
           {fullWidthComponentRoutes.map(({ path, component: Component }) => (
-            <Route
-              key={path}
-              path={path}
-              element={
-                <div>
-                  <Component />
-                </div>
-              }
-            />
+            <Route key={path} path={path} element={renderFullwithComponent(Component)} />
           ))}
         </Routes>
         {/** Move this to Home */}
         <BottomBar />
-      </div>
+      </Grid>
     </div>
+  );
+}
+
+function renderSplitComponent(Component: React.FC, isSmallWindow: boolean) {
+  return (
+    <>
+      <Grid item xs={isSmallWindow ? 12 : 7} className="left">
+        <Component />
+      </Grid>
+      <Grid item xs={isSmallWindow ? 12 : 5} className="right">
+        <Order />
+      </Grid>
+    </>
+  );
+}
+
+function renderFullwithComponent(Component: React.FC) {
+  return (
+    <Grid item xs={12}>
+      <Component />
+    </Grid>
   );
 }
