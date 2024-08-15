@@ -3,14 +3,14 @@ import { Tabs, Tab, Chip } from '@material-ui/core';
 
 import { useHomePageContext } from '../../../../contexts/HomePageContext';
 import { useStyles } from './useStyles';
+import { useServiceTypesQuery } from '../../../../queries/serviceTypes';
 
 export function ServiceTabs() {
   const classes = useStyles();
   const [tabIndex, setTabIndex] = useState(0);
-  // const fetchServiceTypesQuery = useServiceTypesQuery();
+  const fetchServiceTypesQuery = useServiceTypesQuery();
   const { serviceTypeRefs } = useHomePageContext();
-  // const serviceTypes = fetchServiceTypesQuery?.data || [];
-  const serviceTypes: any[] = [];
+  const serviceTypes = fetchServiceTypesQuery?.data || [];
 
   function a11yProps(index: any) {
     return {
