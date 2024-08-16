@@ -19,7 +19,7 @@ export function Header() {
   const navigate = useNavigate();
 
   function getCurrentStep() {
-    switch (location.pathname.replaceAll('/', '')) {
+    switch (location.pathname) {
       case ROUTES.service:
         return 1;
       case ROUTES.staff:
@@ -36,7 +36,7 @@ export function Header() {
   }
 
   function displayHeaderText(staff: StaffDto | NoPreferenceStaff) {
-    switch (location.pathname.replaceAll('/', '')) {
+    switch (location.pathname) {
       case ROUTES.service:
         return 'Select services';
       case ROUTES.staff:

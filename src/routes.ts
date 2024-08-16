@@ -12,43 +12,37 @@ export interface Route {
   layout: Layout;
 }
 
-const root: Route = {
+const service: Route = {
   path: '/',
   component: Service,
   layout: 'split',
 };
 
-const service: Route = {
-  path: 'service',
-  component: Service,
-  layout: 'split',
-};
-
 const staff: Route = {
-  path: 'staff',
+  path: '/staff',
   component: Staff,
   layout: 'split',
 };
 
 const availability: Route = {
-  path: 'availability',
+  path: '/availability',
   component: Availability,
   layout: 'split',
 };
 
 const customerInfoForm: Route = {
-  path: 'customer-info-form',
+  path: '/customer-info-form',
   component: CustomerInfoForm,
   layout: 'split',
 };
 
 const bookingConfirmation: Route = {
-  path: 'booking-confirmation',
+  path: '/booking-confirmation',
   component: BookingConfirmation,
   layout: 'fullwidth',
 };
 
-const frontEndRoutes = [root, service, staff, availability, customerInfoForm, bookingConfirmation];
+const frontEndRoutes = [service, staff, availability, customerInfoForm, bookingConfirmation];
 
 export const splitComponentRoutes = frontEndRoutes.filter((route) => route.layout === 'split');
 
