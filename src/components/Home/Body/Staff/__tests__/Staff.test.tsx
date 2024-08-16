@@ -2,19 +2,18 @@ import { screen, render, waitFor } from '@testing-library/react';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { MemoryRouter } from 'react-router-dom';
 
-import { HomePageContext } from '../../../../../../contexts/HomePageContext';
-import { createPartialTargetText } from '../../../../../../testUtil/helper';
-import { createMockHomePageContextValue } from '../../../../../../testUtil/mockData/HomePageContext';
-import { createMockStaff } from '../../../../../../testUtil/mockData/staff';
 import { Staff } from '../Staff';
+import { HomePageContext } from '../../../../../contexts/HomePageContext';
+import { createPartialTargetText } from '../../../../../testUtil/helper';
+import { createMockHomePageContextValue } from '../../../../../testUtil/mockData/HomePageContext';
+import { createMockStaff } from '../../../../../testUtil/mockData/staff';
 
-jest.mock('../../../../../../network/restApi', () => ({
+jest.mock('../../../../../network/restApi', () => ({
   fetchStaffList: jest.fn(),
 }));
 
 describe('Staff.tsx', () => {
-  const restApi = require('../../../../../../network/restApi');
-
+  const restApi = require('../../../../../network/restApi');
   function renderStaff() {
     const contextValue = createMockHomePageContextValue();
     render(
@@ -41,7 +40,7 @@ describe('Staff.tsx', () => {
     renderStaff();
 
     await waitFor(() => expect(screen.queryByText('No preference')).toBeNull());
-    expect(screen.getByText('John Smith')).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByText('John Smith')).toBeInTheDocument());
   });
 
   it('should notify the user that there is no staff available', async () => {

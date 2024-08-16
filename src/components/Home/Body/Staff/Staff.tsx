@@ -27,7 +27,7 @@ export function Staff() {
   if (pathToSkippedPage) {
     return <Navigate to={pathToSkippedPage} replace />;
   }
-
+  console.log({ allStaffQuery, selectedServices });
   if (!staffList.length) {
     return (
       <Typography component="p" className={classes.noStaffAvailable}>

@@ -3,10 +3,10 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { Props } from '../StaffPanel';
 import { StaffPanel } from '..';
-import { HomePageContextInterface, HomePageContext } from '../../../../../../../contexts/HomePageContext';
-import { createMockHomePageContextValue } from '../../../../../../../testUtil/mockData/HomePageContext';
-import { createMockStaff } from '../../../../../../../testUtil/mockData/staff';
-import { NO_PREFERENCE_STAFF } from '../../../../../../../staticData/staff';
+import { HomePageContextInterface, HomePageContext } from '../../../../../../contexts/HomePageContext';
+import { NO_PREFERENCE_STAFF } from '../../../../../../staticData/staff';
+import { createMockHomePageContextValue } from '../../../../../../testUtil/mockData/HomePageContext';
+import { createMockStaff } from '../../../../../../testUtil/mockData/staff';
 
 describe('StaffPanel.tsx', () => {
   function renderServicePanel(props: Props, contextValue: HomePageContextInterface) {
