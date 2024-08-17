@@ -8,7 +8,6 @@ import dayjs from 'dayjs';
 import { AvailableTime } from './AvailableTime';
 import { Calendar } from './Calendar';
 import { NavigationBar } from './NavigationBar';
-
 import { useStyles } from './useStyles';
 import { ServerErrorAlert } from '../ServerErrorAlert';
 import { useHomePageContext } from '../../../../contexts/HomePageContext';
@@ -45,12 +44,12 @@ export function Availability() {
   return (
     <>
       <Paper elevation={2} className={classes.schedulerContainer}>
-        {/* <Scheduler>
+        <Scheduler>
           <ViewState defaultCurrentDate={initialDate} />
           <Toolbar rootComponent={ToolBarRootComponent} />
           <NavigationBar />
           <Calendar />
-        </Scheduler> */}
+        </Scheduler>
       </Paper>
       {selectedDate?.date && <AvailableTime ref={refToAvailableTime} staffList={staffList || []} />}
     </>

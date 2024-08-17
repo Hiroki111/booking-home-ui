@@ -53,7 +53,7 @@ export function BookingModal({ isOpen, handleClose }: Props) {
       setShowBookingConfirmation(true);
       navigate(ROUTES.bookingConfirmation);
     }
-  }, [createAppointmentMutation.isSuccess, resetAppointmentData, setShowBookingConfirmation]);
+  }, [createAppointmentMutation.isSuccess, resetAppointmentData, navigate, setShowBookingConfirmation]);
 
   useEffect(() => {
     if (createAppointmentMutation.isError) {

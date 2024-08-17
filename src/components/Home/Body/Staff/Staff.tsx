@@ -27,7 +27,6 @@ export function Staff() {
   if (pathToSkippedPage) {
     return <Navigate to={pathToSkippedPage} replace />;
   }
-  console.log({ allStaffQuery, selectedServices });
   if (!staffList.length) {
     return (
       <Typography component="p" className={classes.noStaffAvailable}>
@@ -35,7 +34,6 @@ export function Staff() {
       </Typography>
     );
   }
-
   return (
     <Paper className={classes.root} elevation={2}>
       {staffList.map((staff, i) => (

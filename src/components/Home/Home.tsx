@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Header } from './Header';
 import { Body } from './Body';
 import { HomePageContextProvider } from '../../contexts/HomePageContext';
+import { useDefaultPropsWarningFilter } from '../../hooks/console-error';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -13,6 +14,8 @@ const queryClient = new QueryClient({
 });
 
 export function Home() {
+  useDefaultPropsWarningFilter();
+
   return (
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
