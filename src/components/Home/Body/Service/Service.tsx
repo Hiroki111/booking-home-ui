@@ -11,6 +11,7 @@ import { useIsSmallWindow } from '../../../../hooks/window';
 import { useServiceTypesQuery } from '../../../../queries/serviceTypes';
 import { useRegularStaffQuery } from '../../../../queries/staff';
 import { MAX_SERVICE_SELECTION_NUMBER } from '../../../../staticData/service';
+import { BottomBar } from '../BottomBar';
 
 export const ALERT_TEXT_STAFF_UNAVAILABLE =
   'Due to the availability of staff, this service cannot be added. Please uncheck a selected service.';
@@ -77,6 +78,7 @@ export function Service() {
           {alertMessage}
         </MuiAlert>
       </Snackbar>
+      <BottomBar />
     </>
   );
 }

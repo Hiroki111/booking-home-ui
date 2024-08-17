@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import React from 'react';
 
-import { BottomBar } from './BottomBar';
 import { splitComponentRoutes, fullWidthComponentRoutes } from '../../../routes';
 import { useIsSmallWindow } from '../../../hooks/window';
 import { useServiceTypesQuery } from '../../../queries/serviceTypes';
@@ -35,8 +34,6 @@ export function Body() {
             <Route key={path} path={path} element={renderFullwithComponent(Component)} />
           ))}
         </Routes>
-        {/** Move this to Home */}
-        <BottomBar />
       </Grid>
     </div>
   );

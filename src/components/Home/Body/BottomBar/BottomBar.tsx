@@ -1,4 +1,4 @@
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Chip from '@mui/material/Chip';
@@ -11,7 +11,6 @@ import { useStyles } from './useStyles';
 
 export function BottomBar() {
   const naigate = useNavigate();
-  const location = useLocation();
   const classes = useStyles();
   const { selectedServices } = useHomePageContext();
   const regularStaffQuery = useRegularStaffQuery(selectedServices);
@@ -20,10 +19,6 @@ export function BottomBar() {
   function handleOnClickBooking() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     naigate(ROUTES.staff);
-  }
-
-  if (ROUTES.service !== location.pathname) {
-    return null;
   }
 
   return (
