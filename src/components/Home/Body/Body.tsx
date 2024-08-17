@@ -38,7 +38,7 @@ export function Body() {
             <Route key={path} path={path} element={renderSplitComponent(Component, isSmallWindow)} />
           ))}
           {fullWidthComponentRoutes.map(({ path, component: Component }) => (
-            <Route key={path} path={path} element={renderFullwithComponent(Component)} />
+            <Route key={path} path={path} element={renderFullwidthComponent(Component)} />
           ))}
         </Routes>
       </Grid>
@@ -59,7 +59,7 @@ function renderSplitComponent(Component: React.FC, isSmallWindow: boolean) {
   );
 }
 
-function renderFullwithComponent(Component: React.FC) {
+function renderFullwidthComponent(Component: React.FC) {
   return (
     <Grid item xs={12}>
       <Component />
