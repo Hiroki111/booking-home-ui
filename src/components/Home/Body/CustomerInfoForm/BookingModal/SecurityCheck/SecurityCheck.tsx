@@ -1,5 +1,4 @@
 import { TextField } from '@mui/material';
-import { UseQueryOptions } from 'react-query';
 
 import { useStyles } from './useStyles';
 import { useCaptchaQuery } from '../../../../../../queries/captcha';
@@ -11,9 +10,7 @@ interface Props {
 
 export function SecurityCheck({ handleChangeCaptchaResponse, captchaResonse }: Props) {
   const classes = useStyles();
-  const fetchCaptchaQuery = useCaptchaQuery({
-    refetchOnWindowFocus: false,
-  } as UseQueryOptions);
+  const fetchCaptchaQuery = useCaptchaQuery();
   const captchaChallenge = fetchCaptchaQuery.data || '';
 
   return (

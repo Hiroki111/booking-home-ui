@@ -1,4 +1,4 @@
-import { useQuery, UseQueryResult, UseQueryOptions } from 'react-query';
+import { useQuery, UseQueryResult } from '@tanstack/react-query';
 
 import restApi from '../network/restApi';
 
@@ -6,6 +6,10 @@ export enum captchaQuries {
   fetchCaptcha = 'fetchCaptcha',
 }
 
-export function useCaptchaQuery(options?: Omit<UseQueryOptions<any>, 'queryKey' | 'queryFn'>): UseQueryResult<string> {
-  return useQuery(captchaQuries.fetchCaptcha, restApi.fetchCaptcha, options);
+export function useCaptchaQuery(refetchOnWindowFocus: boolean = false): UseQueryResult<string> {
+  return useQuery({
+    queryKey: [captchaQuries.fetchCaptcha],
+    queryFn: restApi.fetchCaptcha,
+    refetchOnWindowFocus,
+  });
 }

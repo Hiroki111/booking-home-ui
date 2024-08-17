@@ -135,11 +135,11 @@ export function BookingModal({ isOpen, handleClose }: Props) {
             <Button
               variant="contained"
               color="primary"
-              disabled={!captchaResonse || createAppointmentMutation.isLoading || createAppointmentMutation.isSuccess}
+              disabled={!captchaResonse || createAppointmentMutation.isPending || createAppointmentMutation.isSuccess}
               className={classes.bookButton}
               onClick={handleBookAppointment}
             >
-              {!createAppointmentMutation.isLoading ? 'BOOK' : 'SUBMITTING...'}
+              {!createAppointmentMutation.isPending ? 'BOOK' : 'SUBMITTING...'}
             </Button>
           </div>
         </div>

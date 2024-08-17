@@ -14,6 +14,7 @@
     "@mui/material": "^5.16.7",
     "@mui/styles": "^5.16.7",
     "@mui/x-date-pickers": "^7.13.0",
+    "@tanstack/react-query": "^5.51.23",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/user-event": "^13.2.1",
     "@types/jest": "^27.0.1",
@@ -69,6 +70,7 @@
   },
   "devDependencies": {
     "@babel/plugin-transform-private-property-in-object": "^7.24.7",
+    "@tanstack/eslint-plugin-query": "^5.51.15",
     "@testing-library/react": "15.0.6",
     "husky": "^9.1.4",
     "lint-staged": "^15.2.8",
