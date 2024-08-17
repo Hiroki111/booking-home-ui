@@ -1,17 +1,10 @@
-import axios, { AxiosResponse } from 'axios';
+// import axios, { AxiosResponse } from 'axios';
 
-import { AuthenticateResponseBodyDto } from '../interfaces/authenticate';
 import { StaffDto } from '../interfaces/staff';
 import { ServiceTypeDto } from '../interfaces/serviceType';
 import { BookingRequestDto } from '../interfaces/booking';
 import { mockServiceTypeDtos } from './__mocks__/mockServiceTypeDto';
 import { mockStaffList } from './__mocks__/mockStaffList';
-import { BookingRequestError } from './error';
-
-const defaultHeaders = {
-  'Content-Type': 'application/json',
-  Accept: 'application/json',
-};
 
 const restApi = {
   fetchServiceTypes: async function (): Promise<ServiceTypeDto[]> {
