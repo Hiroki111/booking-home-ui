@@ -26,7 +26,7 @@ export function Body() {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={4} className={classes.gridContainer}>
+      <Grid container className={classes.gridContainer}>
         <Routes>
           {splitComponentRoutes.map(({ path, component: Component }) => (
             <Route key={path} path={path} element={renderSplitComponent(Component, isSmallWindow)} />

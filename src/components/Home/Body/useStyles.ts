@@ -15,12 +15,14 @@ export const useStyles = makeStyles((theme) => ({
       padding: '0px 24px',
     },
     '& > div.left': {
+      padding: '16px',
       [theme.breakpoints.up('md')]: {
         paddingBottom: '64px',
         paddingTop: '16px',
       },
     },
     '& > div.right': {
+      padding: '16px',
       [theme.breakpoints.down('md')]: {
         paddingBottom: '64px',
         paddingTop: '16px',
