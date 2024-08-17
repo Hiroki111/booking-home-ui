@@ -37,6 +37,7 @@ export const useStyles = makeStyles((theme) => ({
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
+    paddingTop: '32px',
   },
   circularProgress: {
     color: theme.palette.info.main,

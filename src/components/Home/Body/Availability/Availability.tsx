@@ -9,10 +9,11 @@ import { AvailableTime } from './AvailableTime';
 import { Calendar } from './Calendar';
 import { NavigationBar } from './NavigationBar';
 import { useStyles } from './useStyles';
-import { ServerErrorAlert } from '../ServerErrorAlert';
+
 import { useHomePageContext } from '../../../../contexts/HomePageContext';
 import { useRegularStaffQuery } from '../../../../queries/staff';
 import { getPathToSkippedPage } from '../../../../services/routing';
+import { ServerErrorAlert } from '../ServerErrorAlert';
 
 export function Availability() {
   const classes = useStyles();

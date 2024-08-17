@@ -6,8 +6,9 @@ import { useIsSmallWindow } from '../../../hooks/window';
 import { useServiceTypesQuery } from '../../../queries/serviceTypes';
 import { useStaffQuery } from '../../../queries/staff';
 import { useStyles } from './useStyles';
-import { Grid } from '@mui/material';
+import { CircularProgress, Grid } from '@mui/material';
 import { Order } from './Order';
+import { ServerErrorAlert } from './ServerErrorAlert';
 
 export function Body() {
   const classes = useStyles();
@@ -16,11 +17,17 @@ export function Body() {
   const fetchStaffListQuery = useStaffQuery();
 
   if (fetchServiceTypesQuery.isLoading) {
-    return <div>loading...</div>;
+    return (
+      <React.Fragment>
+        <div className={classes.circularProgressContainer}>
+          <CircularProgress className={classes.circularProgress} />
+        </div>
+      </React.Fragment>
+    );
   }
 
   if (fetchServiceTypesQuery.isError || fetchStaffListQuery.isError) {
-    return <div>server error</div>;
+    return <ServerErrorAlert />;
   }
 
   return (
