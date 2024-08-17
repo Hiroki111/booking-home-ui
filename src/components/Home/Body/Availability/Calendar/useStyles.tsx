@@ -1,9 +1,9 @@
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 
 export const useStyles = makeStyles((theme) => ({
   timeTableLayout: {
     borderRadius: '8px',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       minWidth: '320px',
     },
     [theme.breakpoints.up('md')]: {
@@ -13,7 +13,7 @@ export const useStyles = makeStyles((theme) => ({
   dayScaleLayout: {
     borderRadius: '8px',
     // @media (max-width: 959.95px)
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       minWidth: '320px',
     },
     // @media (min-width: 960px)

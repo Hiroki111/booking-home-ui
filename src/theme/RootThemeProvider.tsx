@@ -1,25 +1,34 @@
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { ThemeProvider, createTheme } from '@material-ui/core/styles';
-import grey from '@material-ui/core/colors/grey';
-
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider, Theme, StyledEngineProvider, createTheme, adaptV4Theme } from '@mui/material/styles';
 import './fonts.css';
 
-const theme = createTheme({
-  typography: {
-    fontFamily: ['Open Sans'].join(','),
-  },
-  palette: {
-    primary: {
-      main: grey[900],
+import { grey } from '@mui/material/colors';
+
+declare module '@mui/styles/defaultTheme' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
+
+const theme = createTheme(
+  adaptV4Theme({
+    typography: {
+      fontFamily: ['Open Sans'].join(','),
     },
-  },
-});
+    palette: {
+      primary: {
+        main: grey[900],
+      },
+    },
+  }),
+);
 
 export function RootThemeProvider({ children }: { children: JSX.Element | JSX.Element[] }) {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      {children}
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 }

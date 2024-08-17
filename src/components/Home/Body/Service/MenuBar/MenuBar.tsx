@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import Chip from '@material-ui/core/Chip';
-import Paper from '@material-ui/core/Paper';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import TabScrollButton from '@material-ui/core/TabScrollButton';
+import Chip from '@mui/material/Chip';
+import Paper from '@mui/material/Paper';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import TabScrollButton from '@mui/material/TabScrollButton';
 import clsx from 'clsx';
 
 import { useStyles } from './useStyles';

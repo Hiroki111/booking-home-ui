@@ -1,8 +1,8 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import Chip from '@material-ui/core/Chip';
-import Slide from '@material-ui/core/Slide';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import Chip from '@mui/material/Chip';
+import Slide from '@mui/material/Slide';
 import { useHomePageContext } from '../../../../contexts/HomePageContext';
 import { useRegularStaffQuery } from '../../../../queries/staff';
 import { ROUTES } from '../../../../routes';

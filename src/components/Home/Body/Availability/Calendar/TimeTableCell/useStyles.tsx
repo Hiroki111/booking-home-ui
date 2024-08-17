@@ -1,5 +1,5 @@
-import { makeStyles } from '@material-ui/core/styles';
-import { blue } from '@material-ui/core/colors';
+import makeStyles from '@mui/styles/makeStyles';
+import { blue } from '@mui/material/colors';
 import { hoverableOption } from '../../../../../../styles/sharedStyles';
 
 export const useStyles = makeStyles((theme) => ({

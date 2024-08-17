@@ -1,6 +1,6 @@
-import Avatar from '@material-ui/core/Avatar';
-import Paper from '@material-ui/core/Paper';
-import PeopleIcon from '@material-ui/icons/People';
+import Avatar from '@mui/material/Avatar';
+import Paper from '@mui/material/Paper';
+import PeopleIcon from '@mui/icons-material/People';
 import clsx from 'clsx';
 import { useState } from 'react';
 

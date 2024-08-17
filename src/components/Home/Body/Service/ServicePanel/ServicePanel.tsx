@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import clsx from 'clsx';
-import Checkbox from '@material-ui/core/Checkbox';
-import Paper from '@material-ui/core/Paper';
-import CircleCheckedFilled from '@material-ui/icons/CheckCircle';
-import CircleUnchecked from '@material-ui/icons/RadioButtonUnchecked';
+import Checkbox from '@mui/material/Checkbox';
+import Paper from '@mui/material/Paper';
+import CircleCheckedFilled from '@mui/icons-material/CheckCircle';
+import CircleUnchecked from '@mui/icons-material/RadioButtonUnchecked';
 
 import { useStyles } from './useStyles';
 import { useHomePageContext } from '../../../../../contexts/HomePageContext';

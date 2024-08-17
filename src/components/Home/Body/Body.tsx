@@ -7,7 +7,7 @@ import { useIsSmallWindow } from '../../../hooks/window';
 import { useServiceTypesQuery } from '../../../queries/serviceTypes';
 import { useStaffQuery } from '../../../queries/staff';
 import { useStyles } from './useStyles';
-import { Grid } from '@material-ui/core';
+import { Grid } from '@mui/material';
 import { Order } from './Order';
 
 export function Body() {

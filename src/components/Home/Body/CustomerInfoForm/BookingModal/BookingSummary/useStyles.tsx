@@ -1,5 +1,5 @@
-import { makeStyles } from '@material-ui/core/styles';
-import grey from '@material-ui/core/colors/grey';
+import makeStyles from '@mui/styles/makeStyles';
+import { grey } from '@mui/material/colors';
 
 export const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,7 +13,7 @@ export const useStyles = makeStyles((theme) => ({
       fontSize: '1rem',
       margin: 0,
       padding: '0 30px',
-      [theme.breakpoints.down('sm')]: {
+      [theme.breakpoints.down('md')]: {
         fontSize: '.75rem',
       },
     },
@@ -22,7 +22,7 @@ export const useStyles = makeStyles((theme) => ({
     fontWeight: 600,
     fontSize: '1rem',
     color: grey[500],
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       fontSize: '.75rem',
     },
   },

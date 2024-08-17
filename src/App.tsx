@@ -1,6 +1,6 @@
 import { SnackbarProvider } from 'notistack';
-import { Grow } from '@material-ui/core';
-import { TransitionProps } from '@material-ui/core/transitions';
+import { Grow } from '@mui/material';
+import { TransitionProps } from '@mui/material/transitions';
 
 import { Home } from './components/Home';
 import { RootThemeProvider } from './theme/RootThemeProvider';

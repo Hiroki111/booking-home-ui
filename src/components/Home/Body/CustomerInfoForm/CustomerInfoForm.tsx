@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import Button from '@material-ui/core/Button';
-import Checkbox from '@material-ui/core/Checkbox';
-import Paper from '@material-ui/core/Paper';
-import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+import Button from '@mui/material/Button';
+import Checkbox from '@mui/material/Checkbox';
+import Paper from '@mui/material/Paper';
+import TextField from '@mui/material/TextField';
 import { flag } from 'country-emoji';
 
 import { PrivacyPolicyModal } from './PrivacyPolicyModal';

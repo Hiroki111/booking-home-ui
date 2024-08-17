@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
-import { useTheme } from '@material-ui/core/styles';
+import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
+import { useTheme } from '@mui/material/styles';
 import clsx from 'clsx';
 
 import { useStyles } from './useStyles';

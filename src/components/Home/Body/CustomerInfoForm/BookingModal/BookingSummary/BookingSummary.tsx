@@ -1,4 +1,4 @@
-import { Grid, GridSize } from '@material-ui/core';
+import { Grid, GridSize } from '@mui/material';
 import dayjs from 'dayjs';
 
 import { useStyles } from './useStyles';

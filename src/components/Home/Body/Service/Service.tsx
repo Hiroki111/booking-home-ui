@@ -1,6 +1,6 @@
 import { useEffect, createRef, useState } from 'react';
-import { Snackbar } from '@material-ui/core';
-import MuiAlert, { Color } from '@material-ui/lab/Alert';
+import { Snackbar } from '@mui/material';
+import MuiAlert, { AlertColor } from '@mui/material/Alert';
 
 import { MenuBar } from './MenuBar';
 
@@ -19,7 +19,7 @@ export const ALERT_TEXT_SERVICE_SELECTION_LIMIT = `You can select up to ${MAX_SE
 export function Service() {
   const classes = useStyles();
   const [alertMessage, setAlertMessage] = useState('');
-  const [alertType, setAlertType] = useState<Color | undefined>(undefined);
+  const [alertType, setAlertType] = useState<AlertColor | undefined>(undefined);
   const { serviceTypeRefs, selectedServices, setServiceTypeRefs } = useHomePageContext();
   const isSmallWindow = useIsSmallWindow();
   const serviceTypesQuery = useServiceTypesQuery();

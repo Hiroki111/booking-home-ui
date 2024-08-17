@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Alert, AlertTitle } from '@material-ui/lab';
-import Button from '@material-ui/core/Button';
-import Fade from '@material-ui/core/Fade';
-import Modal from '@material-ui/core/Modal';
+import { Alert, AlertTitle } from '@mui/material';
+import Button from '@mui/material/Button';
+import Fade from '@mui/material/Fade';
+import Modal from '@mui/material/Modal';
 
 import { BookingSummary } from './BookingSummary';
 import { SecurityCheck } from './SecurityCheck';

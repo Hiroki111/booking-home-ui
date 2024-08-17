@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Tabs, Tab, Chip } from '@material-ui/core';
+import { Tabs, Tab, Chip } from '@mui/material';
 
 import { useStyles } from './useStyles';
 import { useHomePageContext } from '../../../../contexts/HomePageContext';
@@ -30,7 +30,8 @@ export function ServiceTabs() {
         setTabIndex(newValue);
       }}
       variant="scrollable"
-      scrollButtons="on"
+      scrollButtons
+      allowScrollButtonsMobile
     >
       {serviceTypes.map((serviceType, i) => (
         <Tab

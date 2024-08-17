@@ -1,5 +1,5 @@
-import Fade from '@material-ui/core/Fade';
-import Modal from '@material-ui/core/Modal';
+import Fade from '@mui/material/Fade';
+import Modal from '@mui/material/Modal';
 
 import { PrivacyPolicyContent } from './PrivacyPolicyContent';
 import { useStyles } from './useStyles';

@@ -1,5 +1,5 @@
-import { makeStyles } from '@material-ui/core/styles';
-import grey from '@material-ui/core/colors/grey';
+import makeStyles from '@mui/styles/makeStyles';
+import { grey } from '@mui/material/colors';
 
 export const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,7 +21,7 @@ export const useStyles = makeStyles((theme) => ({
       },
     },
     '& > div.right': {
-      [theme.breakpoints.down('sm')]: {
+      [theme.breakpoints.down('md')]: {
         paddingBottom: '64px',
         paddingTop: '16px',
       },

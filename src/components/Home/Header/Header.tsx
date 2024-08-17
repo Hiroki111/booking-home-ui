@@ -1,8 +1,8 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useHomePageContext } from '../../../contexts/HomePageContext';
 import { useIsSmallWindow } from '../../../hooks/window';
 import { StaffDto, NoPreferenceStaff } from '../../../interfaces/staff';

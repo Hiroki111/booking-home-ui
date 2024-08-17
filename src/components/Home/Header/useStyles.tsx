@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 
 export const useStyles = makeStyles((theme) => ({
   toolBar: {
@@ -9,7 +9,7 @@ export const useStyles = makeStyles((theme) => ({
     maxWidth: '960px',
     height: '135px',
     width: '100%',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       padding: '0px 24px',
     },
   },

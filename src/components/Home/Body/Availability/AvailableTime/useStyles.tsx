@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 import { hoverableOption } from '../../../../../styles/sharedStyles';
 
 export const useStyles = makeStyles((theme) => ({
@@ -7,7 +7,7 @@ export const useStyles = makeStyles((theme) => ({
     width: '100%',
     borderRadius: '8px',
     overflow: 'hidden',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       marginTop: '32px',
     },
     [theme.breakpoints.up('md')]: {
@@ -18,7 +18,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   anchor: {
     position: 'absolute',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       top: '-151px',
     },
     [theme.breakpoints.up('md')]: {

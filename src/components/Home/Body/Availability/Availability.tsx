@@ -1,6 +1,6 @@
 import { useEffect, createRef } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { Paper } from '@material-ui/core';
+import { Paper } from '@mui/material';
 import { ViewState } from '@devexpress/dx-react-scheduler';
 import { Scheduler, Toolbar } from '@devexpress/dx-react-scheduler-material-ui';
 import dayjs from 'dayjs';

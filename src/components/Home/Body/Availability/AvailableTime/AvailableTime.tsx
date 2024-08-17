@@ -1,6 +1,6 @@
 import { forwardRef, ForwardedRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Paper from '@material-ui/core/Paper';
+import Paper from '@mui/material/Paper';
 import { useSnackbar } from 'notistack';
 import dayjs from 'dayjs';
 

@@ -1,4 +1,4 @@
-import Paper from '@material-ui/core/Paper';
+import Paper from '@mui/material/Paper';
 import dayjs from 'dayjs';
 
 import { useStyles } from './useStyles';
