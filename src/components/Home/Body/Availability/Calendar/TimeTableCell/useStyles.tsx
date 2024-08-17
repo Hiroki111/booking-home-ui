@@ -4,15 +4,17 @@ import { hoverableOption } from '../../../../../../styles/sharedStyles';
 
 export const useStyles = makeStyles((theme) => ({
   dayCell: {
-    height: 70,
-    position: 'relative',
-    '& div': {
-      fontSize: '1rem',
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      '-ms-transform': 'translate(-50%, -50%)',
+    '&&': {
+      height: 70,
+      position: 'relative',
+      '& div': {
+        fontSize: '1rem',
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        '-ms-transform': 'translate(-50%, -50%)',
+      },
     },
   },
   availableDay: hoverableOption(theme),
