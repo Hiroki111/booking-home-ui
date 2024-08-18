@@ -1,5 +1,5 @@
 import { renderHook, waitFor } from '@testing-library/react';
-import { QueryClientProvider, QueryClient } from 'react-query';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 import { NO_PREFERENCE_STAFF } from '../../staticData/staff';
 import { createMockServiceDto } from '../../testUtil/mockData/service';

@@ -1,6 +1,6 @@
 import { MemoryRouter } from 'react-router-dom';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { AvailableTime } from '../AvailableTime';
 import { HomePageContextInterface, HomePageContext } from '../../../../../../contexts/HomePageContext';
@@ -12,6 +12,7 @@ import { createMockAvailableTimeslot } from '../../../../../../testUtil/mockData
 import { createMockHomePageContextValue } from '../../../../../../testUtil/mockData/HomePageContext';
 import { createMockServiceDto } from '../../../../../../testUtil/mockData/service';
 import { createMockStaff } from '../../../../../../testUtil/mockData/staff';
+import { RootThemeProvider } from '../../../../../../theme/RootThemeProvider';
 
 const mockEnqueue = jest.fn();
 const mockNavigate = jest.fn();
@@ -46,13 +47,15 @@ describe('AvailableTime.tsx', () => {
 
   function renderAvailableTime(contextValue: HomePageContextInterface, staffList: StaffDto[] = []) {
     return render(
-      <MemoryRouter initialEntries={['/']}>
-        <QueryClientProvider client={new QueryClient()}>
-          <HomePageContext.Provider value={contextValue}>
-            <AvailableTime staffList={staffList} />
-          </HomePageContext.Provider>
-        </QueryClientProvider>
-      </MemoryRouter>,
+      <RootThemeProvider>
+        <MemoryRouter>
+          <QueryClientProvider client={new QueryClient()}>
+            <HomePageContext.Provider value={contextValue}>
+              <AvailableTime staffList={staffList} />
+            </HomePageContext.Provider>
+          </QueryClientProvider>
+        </MemoryRouter>
+      </RootThemeProvider>,
     );
   }
 

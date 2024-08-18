@@ -1,5 +1,6 @@
+import { MemoryRouter } from 'react-router-dom';
 import { screen, render, waitFor } from '@testing-library/react';
-import { QueryClientProvider, QueryClient } from 'react-query';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 import { ALERT_TEXT_SERVICE_SELECTION_LIMIT, ALERT_TEXT_STAFF_UNAVAILABLE, Service } from '../Service';
 import { HomePageContextInterface, HomePageContext } from '../../../../../contexts/HomePageContext';
@@ -8,6 +9,7 @@ import { createMockServiceDto } from '../../../../../testUtil/mockData/service';
 import { createMockServiceTypeDto } from '../../../../../testUtil/mockData/serviceType';
 import { createMockStaff } from '../../../../../testUtil/mockData/staff';
 import restApi from '../../../../../network/restApi';
+import { RootThemeProvider } from '../../../../../theme/RootThemeProvider';
 
 jest.mock('../../../../../network/restApi', () => ({
   fetchServiceTypes: jest.fn(),
@@ -27,16 +29,21 @@ describe('Service.tsx', () => {
 
   function renderService(contextValue: HomePageContextInterface) {
     render(
-      <QueryClientProvider client={new QueryClient()}>
-        <HomePageContext.Provider value={contextValue}>
-          <Service />
-        </HomePageContext.Provider>
-      </QueryClientProvider>,
+      <RootThemeProvider>
+        <MemoryRouter>
+          <QueryClientProvider client={new QueryClient()}>
+            <HomePageContext.Provider value={contextValue}>
+              <Service />
+            </HomePageContext.Provider>
+          </QueryClientProvider>
+        </MemoryRouter>
+      </RootThemeProvider>,
     );
   }
 
   it('should show service type names in the menu bar and container', async () => {
-    restApi.fetchServiceTypes = jest.fn().mockImplementation(() => mockServiceTypes);
+    (restApi.fetchServiceTypes as jest.Mock).mockImplementation(() => mockServiceTypes);
+    (restApi.fetchStaffList as jest.Mock).mockImplementation(() => []);
     renderService(createMockHomePageContextValue());
 
     await waitFor(() => screen.getAllByText('Featured'));
@@ -45,23 +52,24 @@ describe('Service.tsx', () => {
   });
 
   it('should notify the user that there is no service available', async () => {
-    restApi.fetchServiceTypes = jest.fn().mockImplementation(() => []);
+    (restApi.fetchServiceTypes as jest.Mock).mockImplementation(() => []);
+    (restApi.fetchStaffList as jest.Mock).mockImplementation(() => []);
     renderService(createMockHomePageContextValue());
 
     await waitFor(() => expect(screen.getByText('No service is available at this moment')).toBeInTheDocument());
   });
 
   it('should notify the user that there is not enough staff for the selected services', async () => {
-    restApi.fetchServiceTypes = jest.fn().mockImplementation(() => mockServiceTypes);
-    restApi.fetchStaffList = jest.fn().mockImplementation(() => []);
+    (restApi.fetchServiceTypes as jest.Mock).mockImplementation(() => mockServiceTypes);
+    (restApi.fetchStaffList as jest.Mock).mockImplementation(() => []);
     renderService(createMockHomePageContextValue());
 
     await waitFor(() => expect(screen.getByText(ALERT_TEXT_STAFF_UNAVAILABLE)).toBeInTheDocument());
   });
 
   it('should notify the user when the selection limit is reached', async () => {
-    restApi.fetchServiceTypes = jest.fn().mockImplementation(() => mockServiceTypes);
-    restApi.fetchStaffList = jest.fn().mockImplementation(() => mockStaffList);
+    (restApi.fetchServiceTypes as jest.Mock).mockImplementation(() => mockServiceTypes);
+    (restApi.fetchStaffList as jest.Mock).mockImplementation(() => mockStaffList);
 
     renderService(
       createMockHomePageContextValue({

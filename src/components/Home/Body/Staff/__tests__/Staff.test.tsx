@@ -1,5 +1,5 @@
 import { screen, render, waitFor } from '@testing-library/react';
-import { QueryClientProvider, QueryClient } from 'react-query';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { MemoryRouter } from 'react-router-dom';
 
 import { Staff } from '../Staff';
@@ -7,6 +7,7 @@ import { HomePageContext } from '../../../../../contexts/HomePageContext';
 import { createPartialTargetText } from '../../../../../testUtil/helper';
 import { createMockHomePageContextValue } from '../../../../../testUtil/mockData/HomePageContext';
 import { createMockStaff } from '../../../../../testUtil/mockData/staff';
+import { RootThemeProvider } from '../../../../../theme/RootThemeProvider';
 
 jest.mock('../../../../../network/restApi', () => ({
   fetchStaffList: jest.fn(),
@@ -17,13 +18,15 @@ describe('Staff.tsx', () => {
   function renderStaff() {
     const contextValue = createMockHomePageContextValue();
     render(
-      <MemoryRouter>
-        <QueryClientProvider client={new QueryClient()}>
-          <HomePageContext.Provider value={contextValue}>
-            <Staff />
-          </HomePageContext.Provider>
-        </QueryClientProvider>
-      </MemoryRouter>,
+      <RootThemeProvider>
+        <MemoryRouter>
+          <QueryClientProvider client={new QueryClient()}>
+            <HomePageContext.Provider value={contextValue}>
+              <Staff />
+            </HomePageContext.Provider>
+          </QueryClientProvider>
+        </MemoryRouter>
+      </RootThemeProvider>,
     );
   }
 

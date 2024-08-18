@@ -1,11 +1,12 @@
 import { screen, render, waitFor } from '@testing-library/react';
-import { QueryClientProvider, QueryClient } from 'react-query';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 import { MenuBar } from '../MenuBar';
 import { HomePageContext } from '../../../../../../contexts/HomePageContext';
 import { createMockHomePageContextValue } from '../../../../../../testUtil/mockData/HomePageContext';
 import { createMockServiceTypeDto } from '../../../../../../testUtil/mockData/serviceType';
 import restApi from '../../../../../../network/restApi';
+import { RootThemeProvider } from '../../../../../../theme/RootThemeProvider';
 
 jest.mock('../../../../../../network/restApi', () => ({
   fetchServiceTypes: jest.fn(),
@@ -19,11 +20,13 @@ describe('MenuBar.tsx', () => {
 
   function renderMenuBar() {
     render(
-      <QueryClientProvider client={new QueryClient()}>
-        <HomePageContext.Provider value={createMockHomePageContextValue()}>
-          <MenuBar />
-        </HomePageContext.Provider>
-      </QueryClientProvider>,
+      <RootThemeProvider>
+        <QueryClientProvider client={new QueryClient()}>
+          <HomePageContext.Provider value={createMockHomePageContextValue()}>
+            <MenuBar />
+          </HomePageContext.Provider>
+        </QueryClientProvider>
+      </RootThemeProvider>,
     );
   }
 

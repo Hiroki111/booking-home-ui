@@ -1,6 +1,6 @@
-import { render, waitFor } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { Availability } from '../Availability';
 import { HomePageContextInterface, HomePageContext } from '../../../../../contexts/HomePageContext';
@@ -9,6 +9,7 @@ import { createMockAvailableDate } from '../../../../../testUtil/mockData/availa
 import { createMockHomePageContextValue } from '../../../../../testUtil/mockData/HomePageContext';
 import { createMockServiceDto } from '../../../../../testUtil/mockData/service';
 import { createMockStaff } from '../../../../../testUtil/mockData/staff';
+import { RootThemeProvider } from '../../../../../theme/RootThemeProvider';
 
 const mockEnqueue = jest.fn();
 jest.mock('notistack', () => ({
@@ -29,13 +30,15 @@ describe('Availability.tsx', () => {
   const service = createMockServiceDto();
   function getAvailabilityComponent(contextValue: HomePageContextInterface) {
     return (
-      <MemoryRouter>
-        <QueryClientProvider client={new QueryClient()}>
-          <HomePageContext.Provider value={contextValue}>
-            <Availability />
-          </HomePageContext.Provider>
-        </QueryClientProvider>
-      </MemoryRouter>
+      <RootThemeProvider>
+        <MemoryRouter>
+          <QueryClientProvider client={new QueryClient()}>
+            <HomePageContext.Provider value={contextValue}>
+              <Availability />
+            </HomePageContext.Provider>
+          </QueryClientProvider>
+        </MemoryRouter>
+      </RootThemeProvider>
     );
   }
 
@@ -43,6 +46,7 @@ describe('Availability.tsx', () => {
     restApi = require('../../../../../network/restApi');
     restApi.fetchStaffList.mockImplementation(() => [createMockStaff()]);
   });
+
   afterEach(() => {
     jest.clearAllMocks();
   });

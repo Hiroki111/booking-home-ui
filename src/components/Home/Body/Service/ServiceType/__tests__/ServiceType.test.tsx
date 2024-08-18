@@ -1,5 +1,5 @@
 import { screen, render } from '@testing-library/react';
-import { QueryClientProvider, QueryClient } from 'react-query';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { HomePageContext } from '../../../../../../contexts/HomePageContext';
 import { ServiceTypeDto } from '../../../../../../interfaces/serviceType';
 import { StaffDto } from '../../../../../../interfaces/staff';
@@ -7,6 +7,7 @@ import { createMockHomePageContextValue } from '../../../../../../testUtil/mockD
 import { createMockServiceDto } from '../../../../../../testUtil/mockData/service';
 import { createMockServiceTypeDto } from '../../../../../../testUtil/mockData/serviceType';
 import { ServiceType } from '../ServiceType';
+import { RootThemeProvider } from '../../../../../../theme/RootThemeProvider';
 
 describe('ServiceType.tsx', () => {
   const mockServiceA = createMockServiceDto({ name: 'Service 1' });
@@ -24,11 +25,13 @@ describe('ServiceType.tsx', () => {
 
   it('should show service type and service names', () => {
     render(
-      <QueryClientProvider client={new QueryClient()}>
-        <HomePageContext.Provider value={createMockHomePageContextValue()}>
-          <ServiceType {...props} />
-        </HomePageContext.Provider>
-      </QueryClientProvider>,
+      <RootThemeProvider>
+        <QueryClientProvider client={new QueryClient()}>
+          <HomePageContext.Provider value={createMockHomePageContextValue()}>
+            <ServiceType {...props} />
+          </HomePageContext.Provider>
+        </QueryClientProvider>
+      </RootThemeProvider>,
     );
 
     expect(screen.getByText('Featured')).toBeInTheDocument();

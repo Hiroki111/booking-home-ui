@@ -1,5 +1,5 @@
 import { screen, render, fireEvent, waitFor } from '@testing-library/react';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { MemoryRouter } from 'react-router-dom';
 
 import { BookingModal } from '../BookingModal';
@@ -17,17 +17,16 @@ import { createMockAvailableTimeslot } from '../../../../../../testUtil/mockData
 import { mockHomePageContextValue } from '../../../../../../testUtil/mockData/HomePageContext';
 import { createMockServiceDto } from '../../../../../../testUtil/mockData/service';
 import { createMockStaff } from '../../../../../../testUtil/mockData/staff';
+import { RootThemeProvider } from '../../../../../../theme/RootThemeProvider';
 
-const mockHistoryPush = jest.fn();
+const mockNavigate = jest.fn();
 
 jest.mock('../../../../../../network/restApi', () => ({
   bookAppointment: jest.fn(),
 }));
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useHistory: () => ({
-    push: mockHistoryPush,
-  }),
+  useNavigate: () => mockNavigate,
 }));
 
 describe('BookingModal.tsx', () => {
@@ -61,25 +60,27 @@ describe('BookingModal.tsx', () => {
 
   function renderBookingModal() {
     render(
-      <MemoryRouter>
-        <QueryClientProvider client={new QueryClient()}>
-          <HomePageContext.Provider
-            value={{
-              ...mockHomePageContextValue,
-              customer: mockCustomer,
-              selectedServices: mockSelectedServices,
-              selectedStaff: mockSelectedStaff,
-              selectedDate: mockSelectedDate,
-              selectedTimeSlot: mockSelectedTimeslot,
-              setSelectedTimeSlot: mockSetSelectedTimeSlot,
-              setSelectedDate: mockSetSelectedDate,
-              setSelectedStaff: mockSetSelectedStaff,
-            }}
-          >
-            <BookingModal isOpen={true} handleClose={() => {}} />
-          </HomePageContext.Provider>
-        </QueryClientProvider>
-      </MemoryRouter>,
+      <RootThemeProvider>
+        <MemoryRouter>
+          <QueryClientProvider client={new QueryClient()}>
+            <HomePageContext.Provider
+              value={{
+                ...mockHomePageContextValue,
+                customer: mockCustomer,
+                selectedServices: mockSelectedServices,
+                selectedStaff: mockSelectedStaff,
+                selectedDate: mockSelectedDate,
+                selectedTimeSlot: mockSelectedTimeslot,
+                setSelectedTimeSlot: mockSetSelectedTimeSlot,
+                setSelectedDate: mockSetSelectedDate,
+                setSelectedStaff: mockSetSelectedStaff,
+              }}
+            >
+              <BookingModal isOpen={true} handleClose={() => {}} />
+            </HomePageContext.Provider>
+          </QueryClientProvider>
+        </MemoryRouter>
+      </RootThemeProvider>,
     );
   }
 
@@ -168,7 +169,7 @@ describe('BookingModal.tsx', () => {
         await waitFor(() => expect(mockSetSelectedTimeSlot).toHaveBeenCalledWith({}));
         await waitFor(() => expect(mockSetSelectedDate).toHaveBeenCalledWith({}));
         await waitFor(() => expect(mockSetSelectedStaff).toHaveBeenCalledWith({}));
-        await waitFor(() => expect(mockHistoryPush).toHaveBeenCalledWith(ROUTES.staff));
+        await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith(ROUTES.staff));
       },
     );
   });
