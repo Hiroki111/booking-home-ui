@@ -69,24 +69,24 @@ describe('Availability.tsx', () => {
     expect(mockedScrollIntoView).toBeCalled();
   });
 
-  // it('should render the calendar', () => {
-  //   jest.useFakeTimers('modern').setSystemTime(new Date('2022-03-01'));
+  it('should render the calendar', () => {
+    jest.useFakeTimers('modern').setSystemTime(new Date('2022-03-01'));
 
-  //   const service = createMockService({ minutes: 30 });
-  //   const availableDateA = createMockAvailableDate({ date: '2022-03-01' });
-  //   const availableDateB = createMockAvailableDate({ date: '2022-03-15' });
-  //   const availableDateC = createMockAvailableDate({ date: '2022-03-30' });
-  //   const staff = createMockStaff({
-  //     services: [service],
-  //     availableDates: [availableDateA, availableDateB, availableDateC],
-  //   });
+    const service = createMockService({ minutes: 30 });
+    const availableDateA = createMockAvailableDate({ date: '2022-03-01' });
+    const availableDateB = createMockAvailableDate({ date: '2022-03-15' });
+    const availableDateC = createMockAvailableDate({ date: '2022-03-30' });
+    const staff = createMockStaff({
+      services: [service],
+      availableDates: [availableDateA, availableDateB, availableDateC],
+    });
 
-  //   const contextValue = createMockHomePageContextValue({
-  //     selectedStaff: staff,
-  //     selectedServices: [service],
-  //   });
-  //   const tree = renderer.create(getAvailabilityComponent(contextValue)).toJSON();
-  //   // '2022-03-01', '2022-03-15', '2022-03-30' will have makeStyles-availableDay-{day} class in the snapshot
-  //   expect(tree).toMatchSnapshot();
-  // });
+    const contextValue = createMockHomePageContextValue({
+      selectedStaff: staff,
+      selectedServices: [service],
+    });
+    const documentFragment = render(getAvailabilityComponent(contextValue)).asFragment();
+    // '2022-03-01', '2022-03-15', '2022-03-30' will have makeStyles-availableDay-{number} class in the snapshot
+    expect(documentFragment).toMatchSnapshot();
+  });
 });

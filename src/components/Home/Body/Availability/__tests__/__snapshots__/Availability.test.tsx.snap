@@ -1,0 +1,654 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Availability.tsx should render the calendar 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation2 makeStyles-schedulerContainer-25 css-1mbunh-MuiPaper-root"
+  >
+    <div
+      class="Container-container css-1kbmavd"
+      style="height: 100%;"
+    >
+      <div
+        class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular Toolbar-toolbar makeStyles-toolbarRoot-26 css-1b7ni76-MuiToolbar-root"
+      >
+        <div
+          class="Root-root css-18bo7dq"
+        >
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary MuiIconButton-sizeLarge NavigationButton-button makeStyles-hideNavButton-30 css-81syra-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="ChevronLeftIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary MuiIconButton-sizeLarge NavigationButton-button css-81syra-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="ChevronRightIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary OpenButton-textButton makeStyles-monthLabel-27 css-1crx5dj-MuiButtonBase-root-MuiButton-root"
+            tabindex="0"
+            type="button"
+          >
+            March 2022
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge OpenButton-iconButton makeStyles-monthLabel-27 css-14xepq4-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="CalendarTodayIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m0 18H4V8h16z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <div
+          class="FlexibleSpace-flexibleSpace css-d3mqhk"
+        />
+      </div>
+      <div
+        class="MainLayout-container css-ctrbc3"
+      >
+        <div>
+          <div
+            class="MainLayout-stickyElement MainLayout-header MainLayout-flexRow"
+          >
+            <div
+              class="MainLayout-background MainLayout-inlineFlex MainLayout-ordinaryHeaderBorder"
+            >
+              <div>
+                <table
+                  class="MuiTable-root Table-table makeStyles-dayScaleLayout-29 css-rtsb0m-MuiTable-root"
+                >
+                  <tbody
+                    class="MuiTableBody-root css-apqrd9-MuiTableBody-root"
+                  >
+                    <tr
+                      class="MuiTableRow-root css-1ljk5xu-MuiTableRow-root"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell css-1mhj3jt-MuiTableCell-root"
+                      >
+                        <div
+                          class="Cell-dayOfWeek"
+                        >
+                          Sun
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell css-1mhj3jt-MuiTableCell-root"
+                      >
+                        <div
+                          class="Cell-dayOfWeek"
+                        >
+                          Mon
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell css-1mhj3jt-MuiTableCell-root"
+                      >
+                        <div
+                          class="Cell-dayOfWeek"
+                        >
+                          Tue
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell css-1mhj3jt-MuiTableCell-root"
+                      >
+                        <div
+                          class="Cell-dayOfWeek"
+                        >
+                          Wed
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell css-1mhj3jt-MuiTableCell-root"
+                      >
+                        <div
+                          class="Cell-dayOfWeek"
+                        >
+                          Thu
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell css-1mhj3jt-MuiTableCell-root"
+                      >
+                        <div
+                          class="Cell-dayOfWeek"
+                        >
+                          Fri
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell css-1mhj3jt-MuiTableCell-root"
+                      >
+                        <div
+                          class="Cell-dayOfWeek"
+                        >
+                          Sat
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div
+            class="MainLayout-flexRow"
+          >
+            <div
+              class="MainLayout-inlineFlex"
+            >
+              <div
+                class="MainLayout-relativeContainer"
+              >
+                <table
+                  class="MuiTable-root Table-table makeStyles-timeTableLayout-28 css-rtsb0m-MuiTable-root"
+                >
+                  <tbody
+                    class="MuiTableBody-root css-apqrd9-MuiTableBody-root"
+                  >
+                    <tr
+                      class="MuiTableRow-root css-1ljk5xu-MuiTableRow-root"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text Cell-otherMonth"
+                        >
+                          27
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text Cell-otherMonth"
+                        >
+                          28
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-availableDay-32 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          Mar 1
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          2
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          3
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          4
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          5
+                        </div>
+                      </td>
+                    </tr>
+                    <tr
+                      class="MuiTableRow-root css-1ljk5xu-MuiTableRow-root"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          6
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          7
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          8
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          9
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          10
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          11
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          12
+                        </div>
+                      </td>
+                    </tr>
+                    <tr
+                      class="MuiTableRow-root css-1ljk5xu-MuiTableRow-root"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          13
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          14
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-availableDay-32 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          15
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          16
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          17
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          18
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          19
+                        </div>
+                      </td>
+                    </tr>
+                    <tr
+                      class="MuiTableRow-root css-1ljk5xu-MuiTableRow-root"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          20
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          21
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          22
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          23
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          24
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          25
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          26
+                        </div>
+                      </td>
+                    </tr>
+                    <tr
+                      class="MuiTableRow-root css-1ljk5xu-MuiTableRow-root"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          27
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          28
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          29
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-availableDay-32 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          30
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text"
+                        >
+                          31
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text Cell-otherMonth"
+                        >
+                          Apr 1
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text Cell-otherMonth"
+                        >
+                          2
+                        </div>
+                      </td>
+                    </tr>
+                    <tr
+                      class="MuiTableRow-root css-1ljk5xu-MuiTableRow-root"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text Cell-otherMonth"
+                        >
+                          3
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text Cell-otherMonth"
+                        >
+                          4
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text Cell-otherMonth"
+                        >
+                          5
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text Cell-otherMonth"
+                        >
+                          6
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text Cell-otherMonth"
+                        >
+                          7
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text Cell-otherMonth"
+                        >
+                          8
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium Cell-cell makeStyles-dayCell-31 makeStyles-unavailableDay-33 css-134af1z-MuiTableCell-root"
+                        tabindex="0"
+                      >
+                        <div
+                          class="Cell-text Cell-otherMonth"
+                        >
+                          9
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div
+                  class="Container-container css-ljfojm"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
