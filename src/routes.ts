@@ -1,29 +1,26 @@
-import { RouteComponentProps } from 'react-router-dom';
-import { Availability } from './components/Home/HomeContent/Body/Availability';
-import { BookingConfirmation } from './components/Home/HomeContent/Body/BookingConfirmation';
-import { CustomerInfoForm } from './components/Home/HomeContent/Body/CustomerInfoForm';
-import { Service } from './components/Home/HomeContent/Body/Service';
-import { Staff as StaffComponent } from './components/Home/HomeContent/Body/Staff';
+import { Availability } from './components/Home/Body/Availability';
+import { BookingConfirmation } from './components/Home/Body/BookingConfirmation';
+import { CustomerInfoForm } from './components/Home/Body/CustomerInfoForm';
+import { Service } from './components/Home/Body/Service';
+import { Staff } from './components/Home/Body/Staff';
 
 type Layout = 'split' | 'fullwidth';
 
 export interface Route {
   path: string;
-  component: React.FC<RouteComponentProps>;
+  component: React.FC;
   layout: Layout;
-  exact?: boolean;
 }
 
 const service: Route = {
   path: '/',
   component: Service,
   layout: 'split',
-  exact: true,
 };
 
 const staff: Route = {
   path: '/staff',
-  component: StaffComponent,
+  component: Staff,
   layout: 'split',
 };
 
@@ -57,6 +54,4 @@ export const ROUTES = {
   availability: availability.path,
   customerInfoForm: customerInfoForm.path,
   bookingConfirmation: bookingConfirmation.path,
-  login: '/login',
-  backoffice: '/backoffice',
 };

@@ -1,6 +1,6 @@
-import { useTheme, useMediaQuery } from '@material-ui/core';
+import { useTheme, useMediaQuery } from '@mui/material';
 
 export function useIsSmallWindow() {
   const theme = useTheme();
-  return useMediaQuery(theme.breakpoints.down('sm'));
+  return useMediaQuery(theme.breakpoints.down('md'));
 }

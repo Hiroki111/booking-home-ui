@@ -1,10 +1,15 @@
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import grey from '@material-ui/core/colors/grey';
-
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider, Theme, StyledEngineProvider, createTheme } from '@mui/material/styles';
 import './fonts.css';
 
-const theme = createMuiTheme({
+import { grey } from '@mui/material/colors';
+
+declare module '@mui/styles/defaultTheme' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
+
+const theme = createTheme({
   typography: {
     fontFamily: ['Open Sans'].join(','),
   },
@@ -17,9 +22,11 @@ const theme = createMuiTheme({
 
 export function RootThemeProvider({ children }: { children: JSX.Element | JSX.Element[] }) {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      {children}
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 }

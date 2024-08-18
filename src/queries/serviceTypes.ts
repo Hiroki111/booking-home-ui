@@ -1,4 +1,4 @@
-import { useQuery, UseQueryResult } from 'react-query';
+import { useQuery, UseQueryResult } from '@tanstack/react-query';
 
 import { ServiceTypeDto } from '../interfaces/serviceType';
 import restApi from '../network/restApi';
@@ -8,5 +8,8 @@ export enum serviceTypesQuries {
 }
 
 export function useServiceTypesQuery(): UseQueryResult<ServiceTypeDto[]> {
-  return useQuery(serviceTypesQuries.fetchServiceTypes, restApi.fetchServiceTypes);
+  return useQuery({
+    queryKey: [serviceTypesQuries.fetchServiceTypes],
+    queryFn: restApi.fetchServiceTypes,
+  });
 }

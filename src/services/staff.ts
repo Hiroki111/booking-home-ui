@@ -17,10 +17,10 @@ export function selectAllStaffWhoCanDoAllServices(
 
   if (regularStaffList.length <= 1) {
     return regularStaffList;
-  } else if (regularStaffList.length >= 2) {
+  }
+  if (regularStaffList.length >= 2) {
     return [NO_PREFERENCE_STAFF, ...regularStaffList];
   }
-
   return regularStaffList;
 }
 

@@ -1,3 +1,4 @@
+import restApi from '../../network/restApi';
 import { createMockAvailableDate } from '../../testUtil/mockData/availableDate';
 import { createMockAvailableTimeslot } from '../../testUtil/mockData/availableTimeSlot';
 import { createMockStaff } from '../../testUtil/mockData/staff';
@@ -19,18 +20,17 @@ describe('services/staff', () => {
   const staffC = createMockStaff({ availableDates: [dateB] });
   const staffD = createMockStaff({ availableDates: [] });
   const allStaff = [staffA, staffB, staffC, staffD];
-  const restApi = require('../../network/restApi');
 
   describe('findFirstAvailableStaff', () => {
     it('should find the first available staff', () => {
-      restApi.fetchStaffList.mockImplementation(() => allStaff);
+      (restApi.fetchStaffList as jest.Mock).mockImplementation(() => allStaff);
 
       const firstAvailableStaff = findFirstAvailableStaff(allStaff, dateA, timeslotB);
       expect(firstAvailableStaff).toEqual(staffA);
     });
 
     it('should return undefined if no staff is available for the date and timeslot', () => {
-      restApi.fetchStaffList.mockImplementation(() => allStaff);
+      (restApi.fetchStaffList as jest.Mock).mockImplementation(() => allStaff);
 
       const firstAvailableStaff = findFirstAvailableStaff(allStaff, dateC, timeslotA);
       expect(firstAvailableStaff).toEqual(undefined);
