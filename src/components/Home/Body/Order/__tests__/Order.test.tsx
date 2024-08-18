@@ -1,4 +1,6 @@
 import { screen, render } from '@testing-library/react';
+import { QueryClientProvider, QueryClient } from 'react-query';
+import { MemoryRouter } from 'react-router-dom';
 
 import { Order } from '../Order';
 import { createMockServiceDto } from '../../../../../testUtil/mockData/service';
@@ -7,6 +9,7 @@ import { createMockAvailableDate } from '../../../../../testUtil/mockData/availa
 import { createMockAvailableTimeslot } from '../../../../../testUtil/mockData/availableTimeSlot';
 import { createMockHomePageContextValue } from '../../../../../testUtil/mockData/HomePageContext';
 import { createMockStaff } from '../../../../../testUtil/mockData/staff';
+import { RootThemeProvider } from '../../../../../theme/RootThemeProvider';
 
 describe('Order', () => {
   const mockServices = [
@@ -38,9 +41,15 @@ describe('Order', () => {
 
   function renderOrder(contextValue: HomePageContextInterface) {
     render(
-      <HomePageContext.Provider value={contextValue}>
-        <Order />
-      </HomePageContext.Provider>,
+      <RootThemeProvider>
+        <MemoryRouter>
+          <QueryClientProvider client={new QueryClient()}>
+            <HomePageContext.Provider value={contextValue}>
+              <Order />
+            </HomePageContext.Provider>
+          </QueryClientProvider>
+        </MemoryRouter>
+      </RootThemeProvider>,
     );
   }
 

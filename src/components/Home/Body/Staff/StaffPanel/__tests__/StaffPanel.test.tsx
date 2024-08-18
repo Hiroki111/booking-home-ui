@@ -7,15 +7,21 @@ import { HomePageContextInterface, HomePageContext } from '../../../../../../con
 import { NO_PREFERENCE_STAFF } from '../../../../../../staticData/staff';
 import { createMockHomePageContextValue } from '../../../../../../testUtil/mockData/HomePageContext';
 import { createMockStaff } from '../../../../../../testUtil/mockData/staff';
+import { QueryClientProvider, QueryClient } from 'react-query';
+import { RootThemeProvider } from '../../../../../../theme/RootThemeProvider';
 
 describe('StaffPanel.tsx', () => {
   function renderServicePanel(props: Props, contextValue: HomePageContextInterface) {
     render(
-      <MemoryRouter>
-        <HomePageContext.Provider value={contextValue}>
-          <StaffPanel {...props} />
-        </HomePageContext.Provider>
-      </MemoryRouter>,
+      <RootThemeProvider>
+        <MemoryRouter>
+          <QueryClientProvider client={new QueryClient()}>
+            <HomePageContext.Provider value={contextValue}>
+              <StaffPanel {...props} />
+            </HomePageContext.Provider>
+          </QueryClientProvider>
+        </MemoryRouter>
+      </RootThemeProvider>,
     );
   }
 

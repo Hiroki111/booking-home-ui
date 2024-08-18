@@ -4,6 +4,9 @@ import { ServicePanel, Props } from '../ServicePanel';
 import { HomePageContextInterface, HomePageContext } from '../../../../../../contexts/HomePageContext';
 import { createMockHomePageContextValue } from '../../../../../../testUtil/mockData/HomePageContext';
 import { createMockServiceDto } from '../../../../../../testUtil/mockData/service';
+import { QueryClientProvider, QueryClient } from 'react-query';
+import { MemoryRouter } from 'react-router-dom';
+import { RootThemeProvider } from '../../../../../../theme/RootThemeProvider';
 
 describe('ServicePanel.tsx', () => {
   const baseProps = {
@@ -19,9 +22,15 @@ describe('ServicePanel.tsx', () => {
 
   function renderServicePanel(overrideProps: Partial<Props>, contextValue: HomePageContextInterface) {
     render(
-      <HomePageContext.Provider value={contextValue}>
-        <ServicePanel {...{ ...baseProps, ...overrideProps }} />
-      </HomePageContext.Provider>,
+      <RootThemeProvider>
+        <MemoryRouter>
+          <QueryClientProvider client={new QueryClient()}>
+            <HomePageContext.Provider value={contextValue}>
+              <ServicePanel {...{ ...baseProps, ...overrideProps }} />
+            </HomePageContext.Provider>
+          </QueryClientProvider>
+        </MemoryRouter>
+      </RootThemeProvider>,
     );
   }
 
