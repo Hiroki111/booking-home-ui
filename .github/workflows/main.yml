@@ -24,4 +24,4 @@ jobs:
         run: yarn lint
 
       - name: Run tests
-        run: yarn test --watchAll=false --updateSnapshot
+        run: yarn test --watchAll=false
