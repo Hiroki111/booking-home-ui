@@ -8,13 +8,13 @@ import { createPartialTargetText } from '../../../../../testUtil/helper';
 import { createMockHomePageContextValue } from '../../../../../testUtil/mockData/HomePageContext';
 import { createMockStaff } from '../../../../../testUtil/mockData/staff';
 import { RootThemeProvider } from '../../../../../theme/RootThemeProvider';
+import restApi from '../../../../../network/restApi';
 
 jest.mock('../../../../../network/restApi', () => ({
   fetchStaffList: jest.fn(),
 }));
 
 describe('Staff.tsx', () => {
-  const restApi = require('../../../../../network/restApi');
   function renderStaff() {
     const contextValue = createMockHomePageContextValue();
     render(
@@ -31,7 +31,7 @@ describe('Staff.tsx', () => {
   }
 
   it('should show "No preference" if there are 2 or more staff available', async () => {
-    restApi.fetchStaffList.mockImplementation(() => [createMockStaff(), createMockStaff()]);
+    (restApi.fetchStaffList as jest.Mock).mockImplementation(() => [createMockStaff(), createMockStaff()]);
     renderStaff();
 
     await waitFor(() => expect(screen.getByText('No preference')).toBeInTheDocument());
@@ -39,7 +39,7 @@ describe('Staff.tsx', () => {
 
   it('should NOT show "No preference" if there is only 1 staff available', async () => {
     const mockStaff = createMockStaff({ name: 'John Smith' });
-    restApi.fetchStaffList.mockImplementation(() => [mockStaff]);
+    (restApi.fetchStaffList as jest.Mock).mockImplementation(() => [mockStaff]);
     renderStaff();
 
     await waitFor(() => expect(screen.queryByText('No preference')).toBeNull());
@@ -47,7 +47,7 @@ describe('Staff.tsx', () => {
   });
 
   it('should notify the user that there is no staff available', async () => {
-    restApi.fetchStaffList.mockImplementation(() => []);
+    (restApi.fetchStaffList as jest.Mock).mockImplementation(() => []);
     renderStaff();
 
     const partialTargetText = createPartialTargetText('No staff available for the selected services.');

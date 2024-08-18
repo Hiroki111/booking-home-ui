@@ -10,6 +10,7 @@ import { createMockHomePageContextValue } from '../../../../../testUtil/mockData
 import { createMockServiceDto } from '../../../../../testUtil/mockData/service';
 import { createMockStaff } from '../../../../../testUtil/mockData/staff';
 import { RootThemeProvider } from '../../../../../theme/RootThemeProvider';
+import restApi from '../../../../../network/restApi';
 
 const mockEnqueue = jest.fn();
 jest.mock('notistack', () => ({
@@ -26,7 +27,6 @@ jest.mock('../../../../../network/restApi', () => ({
 }));
 
 describe('Availability.tsx', () => {
-  let restApi: any;
   const service = createMockServiceDto();
   function getAvailabilityComponent(contextValue: HomePageContextInterface) {
     return (
@@ -43,8 +43,7 @@ describe('Availability.tsx', () => {
   }
 
   beforeEach(() => {
-    restApi = require('../../../../../network/restApi');
-    restApi.fetchStaffList.mockImplementation(() => [createMockStaff()]);
+    (restApi.fetchStaffList as jest.Mock).mockImplementation(() => [createMockStaff()]);
   });
 
   afterEach(() => {

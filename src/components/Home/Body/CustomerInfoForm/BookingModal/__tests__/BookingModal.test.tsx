@@ -18,6 +18,7 @@ import { mockHomePageContextValue } from '../../../../../../testUtil/mockData/Ho
 import { createMockServiceDto } from '../../../../../../testUtil/mockData/service';
 import { createMockStaff } from '../../../../../../testUtil/mockData/staff';
 import { RootThemeProvider } from '../../../../../../theme/RootThemeProvider';
+import restApi from '../../../../../../network/restApi';
 
 const mockNavigate = jest.fn();
 
@@ -30,8 +31,6 @@ jest.mock('react-router-dom', () => ({
 }));
 
 describe('BookingModal.tsx', () => {
-  const restApi = require('../../../../../../network/restApi');
-
   const mockCustomer = createMockCustomer({
     firstName: 'John',
     lastName: 'Smith',
@@ -132,7 +131,7 @@ describe('BookingModal.tsx', () => {
   describe('When booking request fails', () => {
     function triggerBookingRequestError(errorCode: BookingRequestErrorCode) {
       global.console.error = jest.fn();
-      restApi.bookAppointment.mockImplementation(() => {
+      (restApi.bookAppointment as jest.Mock).mockImplementation(() => {
         throw new BookingRequestError('API request failed', errorCode);
       });
     }

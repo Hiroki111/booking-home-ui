@@ -6,13 +6,13 @@ import { createMockServiceDto } from '../../testUtil/mockData/service';
 import { createMockStaff } from '../../testUtil/mockData/staff';
 import { useAllStaffQuery, useRegularStaffQuery } from '../staff';
 import { ReactNode } from 'react';
+import restApi from '../../network/restApi';
 
 jest.mock('../../network/restApi', () => ({
   fetchStaffList: jest.fn(),
 }));
 
 describe('queries/staff', () => {
-  const restApi = require('../../network/restApi');
   const serviceA = createMockServiceDto({ id: 1 });
   const serviceB = createMockServiceDto({ id: 2 });
   const serviceC = createMockServiceDto({ id: 3 });
@@ -28,7 +28,7 @@ describe('queries/staff', () => {
       const staffB = createMockStaff({ services: [serviceA, serviceB] });
       const staffC = createMockStaff({ services: [serviceA] });
       const staffD = createMockStaff({ services: [] });
-      restApi.fetchStaffList.mockImplementation(() => [staffA, staffB, staffC, staffD]);
+      (restApi.fetchStaffList as jest.Mock).mockImplementation(() => [staffA, staffB, staffC, staffD]);
 
       let { result } = renderHook(() => useRegularStaffQuery([serviceA, serviceB, serviceC]), { wrapper });
       await waitFor(() => expect(result.current.isSuccess).toBeTruthy());
@@ -51,7 +51,7 @@ describe('queries/staff', () => {
       const staffC = createMockStaff({ services: [serviceA] });
       const staffD = createMockStaff({ services: [] });
 
-      restApi.fetchStaffList.mockImplementation(() => [staffA, staffB, staffC, staffD]);
+      (restApi.fetchStaffList as jest.Mock).mockImplementation(() => [staffA, staffB, staffC, staffD]);
 
       let { result } = renderHook(() => useAllStaffQuery([serviceA, serviceB, serviceC]), { wrapper });
       await waitFor(() => expect(result.current.isSuccess).toBeTruthy());

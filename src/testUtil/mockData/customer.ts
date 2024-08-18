@@ -5,7 +5,7 @@ const mockCustomer: Customer = {
   lastName: 'Doe',
   countryPhoneCode: '+123',
   phoneNumber: '000111222',
-  email: 'test@mock.com',
+  email: 'test-user@mock.com',
 };
 
 export function createMockCustomer(params?: Partial<Customer>) {
