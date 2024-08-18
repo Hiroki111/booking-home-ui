@@ -9,9 +9,9 @@ import { BookingSummary } from './BookingSummary';
 import { SecurityCheck } from './SecurityCheck';
 import { useStyles } from './useStyles';
 import { useHomePageContext } from '../../../../../contexts/HomePageContext';
-import { AvailableTimeSlotDto } from '../../../../../interfaces/availableTimeSlot';
-import { BookingRequestDto } from '../../../../../interfaces/booking';
-import { AvailableDate, StaffDto } from '../../../../../interfaces/staff';
+import { AvailableTimeSlot } from '../../../../../interfaces/availableTimeSlot';
+import { BookingRequest } from '../../../../../interfaces/booking';
+import { AvailableDate, Staff } from '../../../../../interfaces/staff';
 import { useCreateAppointmentMutation } from '../../../../../queries/appointment';
 import { ROUTES } from '../../../../../routes';
 import { calculateExpectedEndTime } from '../../../../../services/booking';
@@ -77,7 +77,7 @@ export function BookingModal({ isOpen, handleClose }: Props) {
       startTime: selectedTimeSlot.startTime,
       endTime: calculateExpectedEndTime(selectedTimeSlot.startTime, selectedServices),
       captchaText: captchaResonse,
-    } as BookingRequestDto);
+    } as BookingRequest);
   }
 
   function getErrorMessage(error: any) {
@@ -96,9 +96,9 @@ export function BookingModal({ isOpen, handleClose }: Props) {
         data-testid="staff-availability-error-message"
         className={classes.redirectLink}
         onClick={() => {
-          setSelectedTimeSlot({} as AvailableTimeSlotDto);
+          setSelectedTimeSlot({} as AvailableTimeSlot);
           setSelectedDate({} as AvailableDate);
-          setSelectedStaff({} as StaffDto);
+          setSelectedStaff({} as Staff);
           navigate(ROUTES.staff);
         }}
       >

@@ -6,14 +6,14 @@ import dayjs from 'dayjs';
 
 import { useStyles } from './useStyles';
 import { useHomePageContext } from '../../../../../contexts/HomePageContext';
-import { AvailableTimeSlotDto } from '../../../../../interfaces/availableTimeSlot';
-import { StaffDto } from '../../../../../interfaces/staff';
+import { AvailableTimeSlot } from '../../../../../interfaces/availableTimeSlot';
+import { Staff } from '../../../../../interfaces/staff';
 import { ROUTES } from '../../../../../routes';
 import { findFirstAvailableStaff } from '../../../../../services/staff';
 import { NO_PREFERENCE_STAFF } from '../../../../../staticData/staff';
 
 interface Props {
-  staffList: StaffDto[];
+  staffList: Staff[];
 }
 
 function AvailableTime({ staffList }: Props, ref: ForwardedRef<HTMLDivElement>) {
@@ -22,7 +22,7 @@ function AvailableTime({ staffList }: Props, ref: ForwardedRef<HTMLDivElement>) 
   const { enqueueSnackbar } = useSnackbar();
   const { selectedStaff, selectedDate, setSelectedTimeSlot, setSelectedStaff, setSelectedDate } = useHomePageContext();
 
-  function handleClickTimeSlot(availableTimeSlot: AvailableTimeSlotDto) {
+  function handleClickTimeSlot(availableTimeSlot: AvailableTimeSlot) {
     if (selectedStaff.id !== NO_PREFERENCE_STAFF.id) {
       setSelectedTimeSlot(availableTimeSlot);
     } else {
@@ -33,7 +33,7 @@ function AvailableTime({ staffList }: Props, ref: ForwardedRef<HTMLDivElement>) 
     navigation(ROUTES.customerInfoForm);
   }
 
-  function setActualStaffAndTimeForNonPreferenceStaff(availableTimeSlot: AvailableTimeSlotDto) {
+  function setActualStaffAndTimeForNonPreferenceStaff(availableTimeSlot: AvailableTimeSlot) {
     const firstAvailableStaff = findFirstAvailableStaff(staffList || [], selectedDate, availableTimeSlot);
     const firstAvailableStaffDate = firstAvailableStaff?.availableDates?.find(
       (availableDate) => availableDate.date === selectedDate.date,

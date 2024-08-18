@@ -3,7 +3,7 @@ import { QueryClientProvider, QueryClient } from 'react-query';
 import { MemoryRouter } from 'react-router-dom';
 
 import { Order } from '../Order';
-import { createMockServiceDto } from '../../../../../testUtil/mockData/service';
+import { createMockService } from '../../../../../testUtil/mockData/service';
 import { HomePageContextInterface, HomePageContext } from '../../../../../contexts/HomePageContext';
 import { createMockAvailableDate } from '../../../../../testUtil/mockData/availableDate';
 import { createMockAvailableTimeslot } from '../../../../../testUtil/mockData/availableTimeSlot';
@@ -13,14 +13,14 @@ import { RootThemeProvider } from '../../../../../theme/RootThemeProvider';
 
 describe('Order', () => {
   const mockServices = [
-    createMockServiceDto({
+    createMockService({
       id: 1,
       name: 'mock service',
       minutes: 10,
       price: 20,
       tax: 2.5,
     }),
-    createMockServiceDto({
+    createMockService({
       id: 2,
       name: 'another mock service',
       minutes: 15,

@@ -1,14 +1,14 @@
-import { StaffDto } from '../../interfaces/staff';
+import { Staff } from '../../interfaces/staff';
 import { createMockAvailableDate } from './availableDate';
-import { createMockServiceDto } from './service';
+import { createMockService } from './service';
 
-const mockStaff: StaffDto = {
+const mockStaff: Staff = {
   id: 1,
   name: 'John Smith',
-  services: [createMockServiceDto()],
+  services: [createMockService()],
   availableDates: [createMockAvailableDate()],
 };
 
-export function createMockStaff(params?: Partial<StaffDto>) {
+export function createMockStaff(params?: Partial<Staff>) {
   return { ...mockStaff, ...params };
 }

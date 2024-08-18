@@ -4,21 +4,21 @@ import Typography from '@mui/material/Typography';
 import { ServicePanel } from '../ServicePanel';
 import { useStyles } from './useStyles';
 import { useHomePageContext } from '../../../../../contexts/HomePageContext';
-import { ServiceDto } from '../../../../../interfaces/service';
-import { ServiceTypeDto } from '../../../../../interfaces/serviceType';
-import { StaffDto } from '../../../../../interfaces/staff';
+import { Service } from '../../../../../interfaces/service';
+import { ServiceType as ServiceTypeInterface } from '../../../../../interfaces/serviceType';
+import { Staff } from '../../../../../interfaces/staff';
 
 interface Props {
   serviceTypeRef: React.RefObject<any>;
-  serviceType: ServiceTypeDto;
+  serviceType: ServiceTypeInterface;
   canAddMoreService: boolean;
-  availableStaffList: StaffDto[];
+  availableStaffList: Staff[];
 }
 export function ServiceType({ serviceTypeRef, serviceType, canAddMoreService, availableStaffList }: Props) {
   const classes = useStyles();
   const { selectedServices } = useHomePageContext();
 
-  function isServiceSelected(service: ServiceDto): boolean {
+  function isServiceSelected(service: Service): boolean {
     return selectedServices.some((selectedService) => selectedService.id === service.id);
   }
 
@@ -28,7 +28,7 @@ export function ServiceType({ serviceTypeRef, serviceType, canAddMoreService, av
         {serviceType.name}
       </Typography>
       <Paper className={classes.serviceItemsContainer} elevation={2}>
-        {serviceType.services.map((service: ServiceDto, serviceIndex: number) => (
+        {serviceType.services.map((service: Service, serviceIndex: number) => (
           <ServicePanel
             service={service}
             isSelected={isServiceSelected(service)}

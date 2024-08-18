@@ -1,5 +1,5 @@
-import { AvailableTimeSlotDto } from '../../interfaces/availableTimeSlot';
+import { AvailableTimeSlot } from '../../interfaces/availableTimeSlot';
 
-export function createMockAvailableTimeslot(startTime: string, endTime: string): AvailableTimeSlotDto {
+export function createMockAvailableTimeslot(startTime: string, endTime: string): AvailableTimeSlot {
   return { startTime, endTime };
 }

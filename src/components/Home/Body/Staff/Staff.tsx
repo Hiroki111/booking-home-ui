@@ -3,7 +3,7 @@ import { Paper, Typography } from '@mui/material';
 import { StaffPanel } from './StaffPanel';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useHomePageContext } from '../../../../contexts/HomePageContext';
-import { StaffDto, NoPreferenceStaff } from '../../../../interfaces/staff';
+import { Staff as StaffInteface, NoPreferenceStaff } from '../../../../interfaces/staff';
 import { useAllStaffQuery } from '../../../../queries/staff';
 import { ROUTES } from '../../../../routes';
 import { getPathToSkippedPage } from '../../../../services/routing';
@@ -18,7 +18,7 @@ export function Staff() {
   const pathToSkippedPage = getPathToSkippedPage(location.pathname, bookingCompletionState);
   const staffList = allStaffQuery.data || [];
 
-  function handleOnClickStaff(staff: StaffDto | NoPreferenceStaff) {
+  function handleOnClickStaff(staff: StaffInteface | NoPreferenceStaff) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setSelectedStaff(staff);
     navigate(ROUTES.availability);

@@ -7,10 +7,10 @@ import CircleUnchecked from '@mui/icons-material/RadioButtonUnchecked';
 
 import { useStyles } from './useStyles';
 import { useHomePageContext } from '../../../../../contexts/HomePageContext';
-import { ServiceDto } from '../../../../../interfaces/service';
+import { Service } from '../../../../../interfaces/service';
 
 export interface Props {
-  service: ServiceDto;
+  service: Service;
   isSelected: boolean;
   canAddMoreService: boolean;
   isStaffAvailable: boolean;

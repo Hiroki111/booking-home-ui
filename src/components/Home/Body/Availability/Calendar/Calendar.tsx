@@ -5,7 +5,7 @@ import { TimeTableCell } from './TimeTableCell';
 import { useStyles } from './useStyles';
 import { useHomePageContext } from '../../../../../contexts/HomePageContext';
 import { MapDateToAvailableDate } from '../../../../../interfaces/availableDate';
-import { StaffDto } from '../../../../../interfaces/staff';
+import { Staff } from '../../../../../interfaces/staff';
 import { useRegularStaffQuery } from '../../../../../queries/staff';
 import { getMapDateToMaxAvailableDate, getMapDateToAvailableDate } from '../../../../../services/availableDate';
 import { NO_PREFERENCE_STAFF } from '../../../../../staticData/staff';
@@ -23,7 +23,7 @@ export function Calendar() {
   if (selectedStaff.id === NO_PREFERENCE_STAFF.id) {
     mapDateToAvailableDate = mapDateToMaxAvailableDate;
   } else {
-    mapDateToAvailableDate = getMapDateToAvailableDate(selectedStaff as StaffDto, selectedServices);
+    mapDateToAvailableDate = getMapDateToAvailableDate(selectedStaff as Staff, selectedServices);
   }
 
   function TableComponent(props: any) {

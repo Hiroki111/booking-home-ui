@@ -4,7 +4,7 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { MenuBar } from '../MenuBar';
 import { HomePageContext } from '../../../../../../contexts/HomePageContext';
 import { createMockHomePageContextValue } from '../../../../../../testUtil/mockData/HomePageContext';
-import { createMockServiceTypeDto } from '../../../../../../testUtil/mockData/serviceType';
+import { createMockServiceType } from '../../../../../../testUtil/mockData/serviceType';
 import restApi from '../../../../../../network/restApi';
 import { RootThemeProvider } from '../../../../../../theme/RootThemeProvider';
 
@@ -14,8 +14,8 @@ jest.mock('../../../../../../network/restApi', () => ({
 
 describe('MenuBar.tsx', () => {
   const mockServiceTypes = [
-    createMockServiceTypeDto({ id: 1, name: 'Featured' }),
-    createMockServiceTypeDto({ id: 2, name: 'Hands and Feet' }),
+    createMockServiceType({ id: 1, name: 'Featured' }),
+    createMockServiceType({ id: 2, name: 'Hands and Feet' }),
   ];
 
   function renderMenuBar() {

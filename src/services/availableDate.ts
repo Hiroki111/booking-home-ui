@@ -1,10 +1,10 @@
-import { ServiceDto } from '../interfaces/service';
-import { StaffDto } from '../interfaces/staff';
+import { Service } from '../interfaces/service';
+import { Staff } from '../interfaces/staff';
 import { MapDateToAvailableDate } from '../interfaces/availableDate';
 import { filterTimeslotsByServices } from './timeslot';
 import { MAX_AVAILABILITY_DATE_ID } from '../staticData/availableDate';
 
-export function getMapDateToAvailableDate(selectedStaff: StaffDto, selectedServices: ServiceDto[]) {
+export function getMapDateToAvailableDate(selectedStaff: Staff, selectedServices: Service[]) {
   if (!selectedStaff?.availableDates) {
     return {};
   }
@@ -22,7 +22,7 @@ export function getMapDateToAvailableDate(selectedStaff: StaffDto, selectedServi
   );
 }
 
-export function getMapDateToMaxAvailableDate(staffList: StaffDto[], selectedServices: ServiceDto[]) {
+export function getMapDateToMaxAvailableDate(staffList: Staff[], selectedServices: Service[]) {
   const allAvailableDates = staffList.map((staff) => staff.availableDates).flat();
   const mapDateToDiscoveredTimeslotStartTime: { [date: string]: Set<string> } = {};
 

@@ -1,9 +1,9 @@
 import React, { createContext, Dispatch, useReducer, useState, useEffect } from 'react';
 
 import { Customer } from './interfaces/customer';
-import { ServiceDto } from '../interfaces/service';
-import { AvailableDate, NoPreferenceStaff, StaffDto } from '../interfaces/staff';
-import { AvailableTimeSlotDto } from '../interfaces/availableTimeSlot';
+import { Service } from '../interfaces/service';
+import { AvailableDate, NoPreferenceStaff, Staff } from '../interfaces/staff';
+import { AvailableTimeSlot } from '../interfaces/availableTimeSlot';
 import { useSessionStorage } from '../services/sessionStorage';
 import { BookingState, bookingStateReducer, initialBookingState } from '../reducers/bookingState';
 import { setDate, setServices, setStaff, setTimeslot, resetBookingState } from '../reducers/bookingState/actions';
@@ -19,18 +19,18 @@ export interface BookingCompletionState {
 }
 export interface HomePageContextInterface {
   serviceTypeRefs: React.RefObject<any>[];
-  selectedServices: ServiceDto[];
-  selectedStaff: StaffDto | NoPreferenceStaff;
+  selectedServices: Service[];
+  selectedStaff: Staff | NoPreferenceStaff;
   selectedDate: AvailableDate;
-  selectedTimeSlot: AvailableTimeSlotDto;
+  selectedTimeSlot: AvailableTimeSlot;
   customer: Customer;
   showBookingConfirmation: boolean;
   bookingCompletionState: BookingCompletionState;
   setServiceTypeRefs: Dispatch<React.SetStateAction<React.RefObject<any>[]>>;
-  setSelectedServices: (value: ServiceDto[]) => void;
-  setSelectedStaff: (value: StaffDto | NoPreferenceStaff) => void;
+  setSelectedServices: (value: Service[]) => void;
+  setSelectedStaff: (value: Staff | NoPreferenceStaff) => void;
   setSelectedDate: (value: AvailableDate) => void;
-  setSelectedTimeSlot: (value: AvailableTimeSlotDto) => void;
+  setSelectedTimeSlot: (value: AvailableTimeSlot) => void;
   setCustomer: (value: Customer) => void;
   setShowBookingConfirmation: (value: boolean) => void;
   resetAppointmentData: () => void;
@@ -87,10 +87,10 @@ export function HomePageContextProvider({ children }: Props) {
     showBookingConfirmation,
     bookingCompletionState,
     setServiceTypeRefs,
-    setSelectedServices: (services: ServiceDto[]) => dispatchBookingState(setServices(services)),
-    setSelectedStaff: (staff: StaffDto | NoPreferenceStaff) => dispatchBookingState(setStaff(staff)),
+    setSelectedServices: (services: Service[]) => dispatchBookingState(setServices(services)),
+    setSelectedStaff: (staff: Staff | NoPreferenceStaff) => dispatchBookingState(setStaff(staff)),
     setSelectedDate: (date: AvailableDate) => dispatchBookingState(setDate(date)),
-    setSelectedTimeSlot: (timeslot: AvailableTimeSlotDto) => dispatchBookingState(setTimeslot(timeslot)),
+    setSelectedTimeSlot: (timeslot: AvailableTimeSlot) => dispatchBookingState(setTimeslot(timeslot)),
     setCustomer,
     setShowBookingConfirmation,
     resetAppointmentData,

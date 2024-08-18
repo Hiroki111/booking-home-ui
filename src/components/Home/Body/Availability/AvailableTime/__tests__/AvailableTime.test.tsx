@@ -4,13 +4,13 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { AvailableTime } from '../AvailableTime';
 import { HomePageContextInterface, HomePageContext } from '../../../../../../contexts/HomePageContext';
-import { StaffDto } from '../../../../../../interfaces/staff';
+import { Staff } from '../../../../../../interfaces/staff';
 import { ROUTES } from '../../../../../../routes';
 import { NO_PREFERENCE_STAFF } from '../../../../../../staticData/staff';
 import { createMockAvailableDate } from '../../../../../../testUtil/mockData/availableDate';
 import { createMockAvailableTimeslot } from '../../../../../../testUtil/mockData/availableTimeSlot';
 import { createMockHomePageContextValue } from '../../../../../../testUtil/mockData/HomePageContext';
-import { createMockServiceDto } from '../../../../../../testUtil/mockData/service';
+import { createMockService } from '../../../../../../testUtil/mockData/service';
 import { createMockStaff } from '../../../../../../testUtil/mockData/staff';
 import { RootThemeProvider } from '../../../../../../theme/RootThemeProvider';
 
@@ -45,7 +45,7 @@ describe('AvailableTime.tsx', () => {
     setSelectedDate: mockSetSelectedDate,
   });
 
-  function renderAvailableTime(contextValue: HomePageContextInterface, staffList: StaffDto[] = []) {
+  function renderAvailableTime(contextValue: HomePageContextInterface, staffList: Staff[] = []) {
     return render(
       <RootThemeProvider>
         <MemoryRouter>
@@ -115,7 +115,7 @@ describe('AvailableTime.tsx', () => {
       const dateA = createMockAvailableDate({ id: 1, date: '2022-01-01', availableTimeSlots: [timeslotA, timeslotB] });
       const dateB = createMockAvailableDate({ id: 2, date: '2022-01-02', availableTimeSlots: [timeslotB, timeslotC] });
 
-      const service = createMockServiceDto();
+      const service = createMockService();
       const unavilableStaff = createMockStaff({ id: 1, services: [service], availableDates: [dateA] });
       const firstAvailableStaff = createMockStaff({ id: 2, services: [service], availableDates: [dateA, dateB] });
       const secondAvailableStaff = createMockStaff({ id: 2, services: [service], availableDates: [dateA, dateB] });

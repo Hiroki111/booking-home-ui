@@ -1,26 +1,26 @@
 import { screen, render } from '@testing-library/react';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { HomePageContext } from '../../../../../../contexts/HomePageContext';
-import { ServiceTypeDto } from '../../../../../../interfaces/serviceType';
-import { StaffDto } from '../../../../../../interfaces/staff';
+import { ServiceType as ServiceTypeInterface } from '../../../../../../interfaces/serviceType';
+import { Staff } from '../../../../../../interfaces/staff';
 import { createMockHomePageContextValue } from '../../../../../../testUtil/mockData/HomePageContext';
-import { createMockServiceDto } from '../../../../../../testUtil/mockData/service';
-import { createMockServiceTypeDto } from '../../../../../../testUtil/mockData/serviceType';
+import { createMockService } from '../../../../../../testUtil/mockData/service';
+import { createMockServiceType } from '../../../../../../testUtil/mockData/serviceType';
 import { ServiceType } from '../ServiceType';
 import { RootThemeProvider } from '../../../../../../theme/RootThemeProvider';
 
 describe('ServiceType.tsx', () => {
-  const mockServiceA = createMockServiceDto({ name: 'Service 1' });
-  const mockServiceB = createMockServiceDto({ name: 'Service 2' });
-  const mockServiceType = createMockServiceTypeDto({
+  const mockServiceA = createMockService({ name: 'Service 1' });
+  const mockServiceB = createMockService({ name: 'Service 2' });
+  const mockServiceType = createMockServiceType({
     name: 'Featured',
     services: [mockServiceA, mockServiceB],
   });
   const props = {
     serviceTypeRef: { current: null } as React.RefObject<any>,
-    serviceType: mockServiceType as ServiceTypeDto,
+    serviceType: mockServiceType as ServiceTypeInterface,
     canAddMoreService: true,
-    availableStaffList: [] as StaffDto[],
+    availableStaffList: [] as Staff[],
   };
 
   it('should show service type and service names', () => {

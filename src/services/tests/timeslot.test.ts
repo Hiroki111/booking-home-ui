@@ -1,5 +1,5 @@
-import { AvailableTimeSlotDto } from '../../interfaces/availableTimeSlot';
-import { ServiceDto } from '../../interfaces/service';
+import { AvailableTimeSlot } from '../../interfaces/availableTimeSlot';
+import { Service } from '../../interfaces/service';
 import { filterTimeslotsByServices } from '../timeslot';
 
 describe('services/timeslot', () => {
@@ -10,12 +10,12 @@ describe('services/timeslot', () => {
       // "15:00" to "15:30" is absent
       { startTime: '15:30', endTime: '16:00' },
       { startTime: '16:00', endTime: '16:30' },
-    ] as AvailableTimeSlotDto[];
+    ] as AvailableTimeSlot[];
 
     it('should filter timeslots', () => {
-      const servicesA = [{ minutes: 10 }, { minutes: 30 }] as ServiceDto[];
-      const servicesB = [{ minutes: 10 }, { minutes: 30 }, { minutes: 60 }] as ServiceDto[];
-      const servicesC = [{ minutes: 10 }] as ServiceDto[];
+      const servicesA = [{ minutes: 10 }, { minutes: 30 }] as Service[];
+      const servicesB = [{ minutes: 10 }, { minutes: 30 }, { minutes: 60 }] as Service[];
+      const servicesC = [{ minutes: 10 }] as Service[];
 
       const availableTimeslotsA = filterTimeslotsByServices(timeslots, servicesA);
       const availableTimeslotsB = filterTimeslotsByServices(timeslots, servicesB);
@@ -35,7 +35,7 @@ describe('services/timeslot', () => {
     });
 
     it('should filter timeslots with an empty sevice list', () => {
-      const services = [] as ServiceDto[];
+      const services = [] as Service[];
       const availableTimeslots = filterTimeslotsByServices(timeslots, services);
 
       expect(availableTimeslots).toEqual([
@@ -47,7 +47,7 @@ describe('services/timeslot', () => {
     });
 
     it('should return an empty array if there is no timeslot', () => {
-      const services = [{ minutes: 10 }] as ServiceDto[];
+      const services = [{ minutes: 10 }] as Service[];
       const availableTimeslots = filterTimeslotsByServices([], services);
 
       expect(availableTimeslots).toEqual([]);

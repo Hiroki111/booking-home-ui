@@ -1,21 +1,21 @@
-import { AvailableTimeSlotDto } from './availableTimeSlot';
-import { ServiceDto } from './service';
+import { AvailableTimeSlot } from './availableTimeSlot';
+import { Service } from './service';
 
-export interface StaffDto {
+export interface Staff {
   id: number;
   name: string;
   title?: string;
   profilePhotoUrl?: string;
-  services: ServiceDto[];
+  services: Service[];
   availableDates: AvailableDate[];
 }
 
-export interface NoPreferenceStaff extends Omit<StaffDto, 'availableDates' | 'services'> {
+export interface NoPreferenceStaff extends Omit<Staff, 'availableDates' | 'services'> {
   availableDates: string[];
 }
 
 export interface AvailableDate {
   id: number;
   date: string;
-  availableTimeSlots: AvailableTimeSlotDto[];
+  availableTimeSlots: AvailableTimeSlot[];
 }

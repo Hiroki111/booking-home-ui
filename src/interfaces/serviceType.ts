@@ -1,7 +1,7 @@
-import { ServiceDto } from './service';
+import { Service } from './service';
 
-export interface ServiceTypeDto {
+export interface ServiceType {
   id: number;
   name: string;
-  services: ServiceDto[];
+  services: Service[];
 }

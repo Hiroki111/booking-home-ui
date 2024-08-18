@@ -1,7 +1,7 @@
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
 
-import { NoPreferenceStaff, StaffDto } from '../interfaces/staff';
-import { ServiceDto } from '../interfaces/service';
+import { NoPreferenceStaff, Staff } from '../interfaces/staff';
+import { Service } from '../interfaces/service';
 import restApi from '../network/restApi';
 import { selectRegularStaffWhoCanDoAllServices, selectAllStaffWhoCanDoAllServices } from '../services/staff';
 
@@ -9,25 +9,25 @@ export enum staffQuries {
   fetchStaffList = 'fetchStaffList',
 }
 
-export function useStaffQuery(): UseQueryResult<StaffDto[]> {
+export function useStaffQuery(): UseQueryResult<Staff[]> {
   return useQuery({
     queryKey: [staffQuries.fetchStaffList],
     queryFn: restApi.fetchStaffList,
   });
 }
 
-export function useRegularStaffQuery(services: ServiceDto[]): UseQueryResult<StaffDto[]> {
+export function useRegularStaffQuery(services: Service[]): UseQueryResult<Staff[]> {
   return useQuery({
     queryKey: [staffQuries.fetchStaffList],
     queryFn: restApi.fetchStaffList,
-    select: (staffList: StaffDto[]) => selectRegularStaffWhoCanDoAllServices(staffList, services),
+    select: (staffList: Staff[]) => selectRegularStaffWhoCanDoAllServices(staffList, services),
   });
 }
 
-export function useAllStaffQuery(services: ServiceDto[]): UseQueryResult<(NoPreferenceStaff | StaffDto)[]> {
+export function useAllStaffQuery(services: Service[]): UseQueryResult<(NoPreferenceStaff | Staff)[]> {
   return useQuery({
     queryKey: [staffQuries.fetchStaffList],
     queryFn: restApi.fetchStaffList,
-    select: (staffList: StaffDto[]) => selectAllStaffWhoCanDoAllServices(staffList, services),
+    select: (staffList: Staff[]) => selectAllStaffWhoCanDoAllServices(staffList, services),
   });
 }

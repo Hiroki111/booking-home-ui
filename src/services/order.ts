@@ -1,4 +1,4 @@
-import { ServiceDto } from '../interfaces/service';
+import { Service } from '../interfaces/service';
 import { Order } from '../contexts/interfaces/order';
 
 export const defaultOrder = {
@@ -6,7 +6,7 @@ export const defaultOrder = {
   tax: 0,
 };
 
-export function calculateOrder(selectedServices: ServiceDto[]): Order {
+export function calculateOrder(selectedServices: Service[]): Order {
   if (!selectedServices.length) {
     return defaultOrder;
   }

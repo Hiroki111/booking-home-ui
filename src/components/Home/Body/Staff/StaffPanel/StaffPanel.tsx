@@ -5,11 +5,11 @@ import clsx from 'clsx';
 import { useState } from 'react';
 
 import { useStyles } from './useStyles';
-import { StaffDto, NoPreferenceStaff } from '../../../../../interfaces/staff';
+import { Staff, NoPreferenceStaff } from '../../../../../interfaces/staff';
 import { NO_PREFERENCE_STAFF } from '../../../../../staticData/staff';
 
 export interface Props {
-  staff: StaffDto | NoPreferenceStaff;
+  staff: Staff | NoPreferenceStaff;
   handleOnClick: () => void;
 }
 
@@ -17,7 +17,7 @@ export function StaffPanel({ staff, handleOnClick }: Props) {
   const classes = useStyles();
   const [isImageInvalid, setIsImageInvalid] = useState(false);
 
-  function displayPhoto(staff: StaffDto) {
+  function displayPhoto(staff: Staff) {
     return (
       <img
         data-testid="staff-photo"
@@ -29,7 +29,7 @@ export function StaffPanel({ staff, handleOnClick }: Props) {
     );
   }
 
-  function displayAvatar(staff: StaffDto) {
+  function displayAvatar(staff: Staff) {
     if (staff.id === NO_PREFERENCE_STAFF.id) {
       return (
         <Avatar data-testid="no-preference-staff-avatar" className={classes.avatar}>
@@ -61,9 +61,7 @@ export function StaffPanel({ staff, handleOnClick }: Props) {
     <Paper key={staff.id} elevation={2} square onClick={handleOnClick} className={classes.root}>
       <div className={classes.staff}>
         <div>
-          {!!staff.profilePhotoUrl && !isImageInvalid
-            ? displayPhoto(staff as StaffDto)
-            : displayAvatar(staff as StaffDto)}
+          {!!staff.profilePhotoUrl && !isImageInvalid ? displayPhoto(staff as Staff) : displayAvatar(staff as Staff)}
         </div>
         <div className={classes.staffNameAndServices}>
           <div>

@@ -1,8 +1,8 @@
-import { ServiceDto } from '../../../../../interfaces/service';
+import { Service } from '../../../../../interfaces/service';
 import { useStyles } from './useStyles';
 
 interface Props {
-  service: ServiceDto;
+  service: Service;
 }
 
 export function SelectedServiceContainer({ service }: Props) {

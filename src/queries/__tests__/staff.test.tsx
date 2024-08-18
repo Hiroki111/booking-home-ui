@@ -2,7 +2,7 @@ import { renderHook, waitFor } from '@testing-library/react';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 import { NO_PREFERENCE_STAFF } from '../../staticData/staff';
-import { createMockServiceDto } from '../../testUtil/mockData/service';
+import { createMockService } from '../../testUtil/mockData/service';
 import { createMockStaff } from '../../testUtil/mockData/staff';
 import { useAllStaffQuery, useRegularStaffQuery } from '../staff';
 import { ReactNode } from 'react';
@@ -13,10 +13,10 @@ jest.mock('../../network/restApi', () => ({
 }));
 
 describe('queries/staff', () => {
-  const serviceA = createMockServiceDto({ id: 1 });
-  const serviceB = createMockServiceDto({ id: 2 });
-  const serviceC = createMockServiceDto({ id: 3 });
-  const serviceZ = createMockServiceDto({ id: 100 });
+  const serviceA = createMockService({ id: 1 });
+  const serviceB = createMockService({ id: 2 });
+  const serviceC = createMockService({ id: 3 });
+  const serviceZ = createMockService({ id: 100 });
 
   function wrapper({ children }: { children: ReactNode }) {
     return <QueryClientProvider client={new QueryClient()}>{children}</QueryClientProvider>;

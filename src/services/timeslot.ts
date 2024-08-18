@@ -1,18 +1,15 @@
 import dayjs from 'dayjs';
-import { AvailableTimeSlotDto } from '../interfaces/availableTimeSlot';
-import { ServiceDto } from '../interfaces/service';
+import { AvailableTimeSlot } from '../interfaces/availableTimeSlot';
+import { Service } from '../interfaces/service';
 
-export function filterTimeslotsByServices(
-  timeslots: AvailableTimeSlotDto[],
-  services: ServiceDto[],
-): AvailableTimeSlotDto[] {
+export function filterTimeslotsByServices(timeslots: AvailableTimeSlot[], services: Service[]): AvailableTimeSlot[] {
   const totalMinutesRequired = services.reduce((totalMin: number, service) => totalMin + service.minutes, 0);
 
   return timeslots.filter((timeslot, i) => hasEnoughLengthOfTimeslots(timeslots, i, totalMinutesRequired, 0));
 }
 
 function hasEnoughLengthOfTimeslots(
-  allTimeslots: AvailableTimeSlotDto[],
+  allTimeslots: AvailableTimeSlot[],
   currentTimeslotIndex: number,
   totalMinutesRequired: number,
   accumlatedTimeslotLength: number,

@@ -1,4 +1,4 @@
-export interface BookingRequestDto {
+export interface BookingRequest {
   firstName: string;
   lastName: string;
   phoneNumber: string;

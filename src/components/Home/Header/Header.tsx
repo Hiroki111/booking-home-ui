@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useHomePageContext } from '../../../contexts/HomePageContext';
 import { useIsSmallWindow } from '../../../hooks/window';
-import { StaffDto, NoPreferenceStaff } from '../../../interfaces/staff';
+import { Staff, NoPreferenceStaff } from '../../../interfaces/staff';
 import { ROUTES } from '../../../routes';
 import { NO_PREFERENCE_STAFF } from '../../../staticData/staff';
 import { ServiceTabs } from './ServiceTabs';
@@ -35,7 +35,7 @@ export function Header() {
     }
   }
 
-  function displayHeaderText(staff: StaffDto | NoPreferenceStaff) {
+  function displayHeaderText(staff: Staff | NoPreferenceStaff) {
     switch (location.pathname) {
       case ROUTES.service:
         return 'Select services';
@@ -50,7 +50,7 @@ export function Header() {
     }
   }
 
-  function getHeaderTextForAvailability(staff: StaffDto | NoPreferenceStaff) {
+  function getHeaderTextForAvailability(staff: Staff | NoPreferenceStaff) {
     if (staff.id === NO_PREFERENCE_STAFF.id) {
       return 'Select time';
     }
@@ -101,7 +101,7 @@ export function Header() {
           </Typography>
         )}
         <Typography component="h2" variant="h6" className={classes.pageTitle} noWrap>
-          {displayHeaderText(selectedStaff as StaffDto | NoPreferenceStaff)}
+          {displayHeaderText(selectedStaff as Staff | NoPreferenceStaff)}
         </Typography>
       </Toolbar>
       {isSmallWindow && isServicePage() && <ServiceTabs />}

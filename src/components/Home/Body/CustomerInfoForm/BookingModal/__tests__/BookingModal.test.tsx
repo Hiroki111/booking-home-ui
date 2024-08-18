@@ -15,7 +15,7 @@ import {
 import { createMockAvailableDate } from '../../../../../../testUtil/mockData/availableDate';
 import { createMockAvailableTimeslot } from '../../../../../../testUtil/mockData/availableTimeSlot';
 import { mockHomePageContextValue } from '../../../../../../testUtil/mockData/HomePageContext';
-import { createMockServiceDto } from '../../../../../../testUtil/mockData/service';
+import { createMockService } from '../../../../../../testUtil/mockData/service';
 import { createMockStaff } from '../../../../../../testUtil/mockData/staff';
 import { RootThemeProvider } from '../../../../../../theme/RootThemeProvider';
 import restApi from '../../../../../../network/restApi';
@@ -39,8 +39,8 @@ describe('BookingModal.tsx', () => {
     email: 'john@mock.com',
   });
   const mockSelectedServices = [
-    createMockServiceDto({ id: 10, minutes: 10, price: 15.5 }),
-    createMockServiceDto({ id: 20, minutes: 15, price: 20 }),
+    createMockService({ id: 10, minutes: 10, price: 15.5 }),
+    createMockService({ id: 20, minutes: 15, price: 20 }),
   ];
   const mockSelectedTimeslot = createMockAvailableTimeslot('10:30', '11:00');
   const mockSelectedDate = createMockAvailableDate({

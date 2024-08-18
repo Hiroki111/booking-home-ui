@@ -1,14 +1,14 @@
-import { ServiceTypeDto } from '../../interfaces/serviceType';
-import { createMockServiceTypeDto } from '../../testUtil/mockData/serviceType';
-import * as mockServices from './mockServiceDto';
+import { ServiceType } from '../../interfaces/serviceType';
+import { createMockServiceType } from '../../testUtil/mockData/serviceType';
+import * as mockServices from './mockService';
 
-export const mockServiceTypeDtos: ServiceTypeDto[] = [
-  createMockServiceTypeDto({
+export const mockServiceTypes: ServiceType[] = [
+  createMockServiceType({
     id: 1,
     name: 'Featured',
     services: [mockServices.blowDry, mockServices.eyebrowsWax, mockServices.sprayTanFullBody],
   }),
-  createMockServiceTypeDto({
+  createMockServiceType({
     id: 2,
     name: 'Hands and Feet',
     services: [
@@ -17,12 +17,12 @@ export const mockServiceTypeDtos: ServiceTypeDto[] = [
       mockServices.fullhandnailartaddon,
     ],
   }),
-  createMockServiceTypeDto({
+  createMockServiceType({
     id: 3,
     name: 'Hair cut',
     services: [mockServices.cutBlowDry, mockServices.cutBlowDryAddOn, mockServices.cutBlowDryClour],
   }),
-  createMockServiceTypeDto({
+  createMockServiceType({
     id: 4,
     name: 'Colouring',
     services: [
@@ -31,7 +31,7 @@ export const mockServiceTypeDtos: ServiceTypeDto[] = [
       mockServices.colourConsultationColourExpert,
     ],
   }),
-  createMockServiceTypeDto({
+  createMockServiceType({
     id: 5,
     name: 'Skin Clinic',
     services: [
@@ -40,7 +40,7 @@ export const mockServiceTypeDtos: ServiceTypeDto[] = [
       mockServices.bespokeFacialwithSkinSpecialist,
     ],
   }),
-  createMockServiceTypeDto({
+  createMockServiceType({
     id: 6,
     name: 'Eyelashes',
     services: [

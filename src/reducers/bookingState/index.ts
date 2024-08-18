@@ -1,21 +1,21 @@
-import { ServiceDto } from '../../interfaces/service';
-import { AvailableDate, StaffDto } from '../../interfaces/staff';
-import { AvailableTimeSlotDto } from '../../interfaces/availableTimeSlot';
+import { Service } from '../../interfaces/service';
+import { AvailableDate, Staff } from '../../interfaces/staff';
+import { AvailableTimeSlot } from '../../interfaces/availableTimeSlot';
 import { BookingStateActionType } from './types';
 import { BookingStateAction } from './actions';
 
 export interface BookingState {
-  services: ServiceDto[];
-  staff: StaffDto;
+  services: Service[];
+  staff: Staff;
   date: AvailableDate;
-  timeslot: AvailableTimeSlotDto;
+  timeslot: AvailableTimeSlot;
 }
 
 export const initialBookingState = {
-  services: [] as ServiceDto[],
-  staff: {} as StaffDto,
+  services: [] as Service[],
+  staff: {} as Staff,
   date: {} as AvailableDate,
-  timeslot: {} as AvailableTimeSlotDto,
+  timeslot: {} as AvailableTimeSlot,
 };
 
 export function bookingStateReducer(state: BookingState, action: BookingStateAction) {

@@ -1,9 +1,9 @@
-import { StaffDto } from '../../interfaces/staff';
+import { Staff } from '../../interfaces/staff';
 import { createMockStaff } from '../../testUtil/mockData/staff';
-import { getServices } from './mockServiceDto';
+import { getServices } from './mockService';
 import { getMockAvailableDates } from './mockAvailableDate';
 
-export const mockStaffList: StaffDto[] = [
+export const mockStaffList: Staff[] = [
   createMockStaff({
     id: 1,
     name: 'Barak Obama',

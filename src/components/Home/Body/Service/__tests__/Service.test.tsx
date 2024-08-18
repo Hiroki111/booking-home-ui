@@ -5,8 +5,8 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { ALERT_TEXT_SERVICE_SELECTION_LIMIT, ALERT_TEXT_STAFF_UNAVAILABLE, Service } from '../Service';
 import { HomePageContextInterface, HomePageContext } from '../../../../../contexts/HomePageContext';
 import { createMockHomePageContextValue } from '../../../../../testUtil/mockData/HomePageContext';
-import { createMockServiceDto } from '../../../../../testUtil/mockData/service';
-import { createMockServiceTypeDto } from '../../../../../testUtil/mockData/serviceType';
+import { createMockService } from '../../../../../testUtil/mockData/service';
+import { createMockServiceType } from '../../../../../testUtil/mockData/serviceType';
 import { createMockStaff } from '../../../../../testUtil/mockData/staff';
 import restApi from '../../../../../network/restApi';
 import { RootThemeProvider } from '../../../../../theme/RootThemeProvider';
@@ -22,8 +22,8 @@ jest.mock('../../../../../staticData/service', () => ({
 
 describe('Service.tsx', () => {
   const mockServiceTypes = [
-    createMockServiceTypeDto({ id: 1, name: 'Featured' }),
-    createMockServiceTypeDto({ id: 2, name: 'Hands and Feet' }),
+    createMockServiceType({ id: 1, name: 'Featured' }),
+    createMockServiceType({ id: 2, name: 'Hands and Feet' }),
   ];
   const mockStaffList = [createMockStaff({ id: 1, name: 'John Doe' })];
 
@@ -73,7 +73,7 @@ describe('Service.tsx', () => {
 
     renderService(
       createMockHomePageContextValue({
-        selectedServices: [createMockServiceDto(), createMockServiceDto(), createMockServiceDto()],
+        selectedServices: [createMockService(), createMockService(), createMockService()],
       }),
     );
 

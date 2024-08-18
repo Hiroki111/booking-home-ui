@@ -7,7 +7,7 @@ import { HomePageContextInterface, HomePageContext } from '../../../../../contex
 import { AvailableDate } from '../../../../../interfaces/staff';
 import { createMockAvailableDate } from '../../../../../testUtil/mockData/availableDate';
 import { createMockHomePageContextValue } from '../../../../../testUtil/mockData/HomePageContext';
-import { createMockServiceDto } from '../../../../../testUtil/mockData/service';
+import { createMockService } from '../../../../../testUtil/mockData/service';
 import { createMockStaff } from '../../../../../testUtil/mockData/staff';
 import { RootThemeProvider } from '../../../../../theme/RootThemeProvider';
 import restApi from '../../../../../network/restApi';
@@ -27,7 +27,7 @@ jest.mock('../../../../../network/restApi', () => ({
 }));
 
 describe('Availability.tsx', () => {
-  const service = createMockServiceDto();
+  const service = createMockService();
   function getAvailabilityComponent(contextValue: HomePageContextInterface) {
     return (
       <RootThemeProvider>
@@ -72,7 +72,7 @@ describe('Availability.tsx', () => {
   // it('should render the calendar', () => {
   //   jest.useFakeTimers('modern').setSystemTime(new Date('2022-03-01'));
 
-  //   const service = createMockServiceDto({ minutes: 30 });
+  //   const service = createMockService({ minutes: 30 });
   //   const availableDateA = createMockAvailableDate({ date: '2022-03-01' });
   //   const availableDateB = createMockAvailableDate({ date: '2022-03-15' });
   //   const availableDateC = createMockAvailableDate({ date: '2022-03-30' });

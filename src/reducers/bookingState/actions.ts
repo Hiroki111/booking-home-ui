@@ -1,20 +1,20 @@
-import { AvailableDate, NoPreferenceStaff, StaffDto } from '../../interfaces/staff';
-import { ServiceDto } from '../../interfaces/service';
-import { AvailableTimeSlotDto } from '../../interfaces/availableTimeSlot';
+import { AvailableDate, NoPreferenceStaff, Staff } from '../../interfaces/staff';
+import { Service } from '../../interfaces/service';
+import { AvailableTimeSlot } from '../../interfaces/availableTimeSlot';
 import { BookingStateActionType } from './types';
 export interface BookingStateAction {
   type: BookingStateActionType;
   payload?: any;
 }
 
-export const setServices = (services: ServiceDto[]): BookingStateAction => {
+export const setServices = (services: Service[]): BookingStateAction => {
   return {
     type: BookingStateActionType.SET_SERVICES,
     payload: services,
   };
 };
 
-export const setStaff = (staff: StaffDto | NoPreferenceStaff): BookingStateAction => {
+export const setStaff = (staff: Staff | NoPreferenceStaff): BookingStateAction => {
   return {
     type: BookingStateActionType.SET_STAFF,
     payload: staff,
@@ -28,7 +28,7 @@ export const setDate = (date: AvailableDate): BookingStateAction => {
   };
 };
 
-export const setTimeslot = (timeslot: AvailableTimeSlotDto): BookingStateAction => {
+export const setTimeslot = (timeslot: AvailableTimeSlot): BookingStateAction => {
   return {
     type: BookingStateActionType.SET_TIMESLOT,
     payload: timeslot,

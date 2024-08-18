@@ -1,5 +1,5 @@
-import { AvailableTimeSlotDto } from '../interfaces/availableTimeSlot';
-import { AvailableDate, StaffDto } from '../interfaces/staff';
+import { AvailableTimeSlot } from '../interfaces/availableTimeSlot';
+import { AvailableDate, Staff } from '../interfaces/staff';
 
 // no one can do service 18
 // service 19 doesn't exist
@@ -19,7 +19,7 @@ export const staffList = [
           { startTime: '13:30' },
           { startTime: '13:45' },
           { startTime: '15:15' },
-        ] as AvailableTimeSlotDto[],
+        ] as AvailableTimeSlot[],
       },
       {
         date: '2021-09-15',
@@ -27,7 +27,7 @@ export const staffList = [
           { startTime: '09:30' },
           { startTime: '13:30' },
           { startTime: '13:45' },
-        ] as AvailableTimeSlotDto[],
+        ] as AvailableTimeSlot[],
       },
     ] as AvailableDate[],
   },
@@ -48,7 +48,7 @@ export const staffList = [
           { startTime: '13:30' },
           { startTime: '13:45' },
           { startTime: '15:15' },
-        ] as AvailableTimeSlotDto[],
+        ] as AvailableTimeSlot[],
       },
       {
         date: '2021-09-15',
@@ -56,7 +56,7 @@ export const staffList = [
           { startTime: '09:30' },
           { startTime: '13:30' },
           { startTime: '13:45' },
-        ] as AvailableTimeSlotDto[],
+        ] as AvailableTimeSlot[],
       },
     ] as AvailableDate[],
   },
@@ -71,7 +71,7 @@ export const staffList = [
           { startTime: '13:30' },
           { startTime: '14:15' },
           { startTime: '15:00' },
-        ] as AvailableTimeSlotDto[],
+        ] as AvailableTimeSlot[],
       },
     ] as AvailableDate[],
   },
@@ -91,7 +91,7 @@ export const staffList = [
           { startTime: '13:30' },
           { startTime: '13:45' },
           { startTime: '15:15' },
-        ] as AvailableTimeSlotDto[],
+        ] as AvailableTimeSlot[],
       },
     ] as AvailableDate[],
   },
@@ -110,7 +110,7 @@ export const staffList = [
           { startTime: '13:30' },
           { startTime: '13:45' },
           { startTime: '15:15' },
-        ] as AvailableTimeSlotDto[],
+        ] as AvailableTimeSlot[],
       },
     ] as AvailableDate[],
   },
@@ -128,7 +128,7 @@ export const staffList = [
           { startTime: '13:30' },
           { startTime: '13:45' },
           { startTime: '15:15' },
-        ] as AvailableTimeSlotDto[],
+        ] as AvailableTimeSlot[],
       },
     ] as AvailableDate[],
   },
@@ -146,7 +146,7 @@ export const staffList = [
           { startTime: '13:30' },
           { startTime: '13:45' },
           { startTime: '15:15' },
-        ] as AvailableTimeSlotDto[],
+        ] as AvailableTimeSlot[],
       },
     ] as AvailableDate[],
   },
@@ -164,7 +164,7 @@ export const staffList = [
           { startTime: '13:30' },
           { startTime: '13:45' },
           { startTime: '15:15' },
-        ] as AvailableTimeSlotDto[],
+        ] as AvailableTimeSlot[],
       },
     ] as AvailableDate[],
   },
@@ -182,7 +182,7 @@ export const staffList = [
           { startTime: '13:30' },
           { startTime: '13:45' },
           { startTime: '15:15' },
-        ] as AvailableTimeSlotDto[],
+        ] as AvailableTimeSlot[],
       },
     ] as AvailableDate[],
   },
@@ -200,7 +200,7 @@ export const staffList = [
           { startTime: '13:30' },
           { startTime: '13:45' },
           { startTime: '15:15' },
-        ] as AvailableTimeSlotDto[],
+        ] as AvailableTimeSlot[],
       },
     ] as AvailableDate[],
   },
@@ -219,8 +219,8 @@ export const staffList = [
           { startTime: '13:30' },
           { startTime: '13:45' },
           { startTime: '15:15' },
-        ] as AvailableTimeSlotDto[],
+        ] as AvailableTimeSlot[],
       },
     ] as AvailableDate[],
   },
-] as StaffDto[];
+] as Staff[];

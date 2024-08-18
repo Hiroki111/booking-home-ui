@@ -1,24 +1,24 @@
 // import axios, { AxiosResponse } from 'axios';
 
-import { StaffDto } from '../interfaces/staff';
-import { ServiceTypeDto } from '../interfaces/serviceType';
-import { BookingRequestDto } from '../interfaces/booking';
-import { mockServiceTypeDtos } from './__mocks__/mockServiceTypeDto';
+import { Staff } from '../interfaces/staff';
+import { ServiceType } from '../interfaces/serviceType';
+import { BookingRequest } from '../interfaces/booking';
+import { mockServiceTypes } from './__mocks__/mockServiceType';
 import { mockStaffList } from './__mocks__/mockStaffList';
 
 const restApi = {
-  fetchServiceTypes: async function (): Promise<ServiceTypeDto[]> {
-    return new Promise((res) => setTimeout(() => res(mockServiceTypeDtos), 1000));
-    // const res: AxiosResponse<ServiceTypeDto[]> = await axios({
+  fetchServiceTypes: async function (): Promise<ServiceType[]> {
+    return new Promise((res) => setTimeout(() => res(mockServiceTypes), 1000));
+    // const res: AxiosResponse<ServiceType[]> = await axios({
     //   method: 'GET',
     //   url: '/api/serviceTypes',
     // });
     // return res.data;
   },
 
-  fetchStaffList: async function (): Promise<StaffDto[]> {
+  fetchStaffList: async function (): Promise<Staff[]> {
     return new Promise((res) => setTimeout(() => res(mockStaffList), 1000));
-    // const res: AxiosResponse<StaffDto[]> = await axios({
+    // const res: AxiosResponse<Staff[]> = await axios({
     //   method: 'GET',
     //   url: '/api/staff',
     // });
@@ -37,7 +37,7 @@ const restApi = {
     // return res.data;
   },
 
-  bookAppointment: async function (data: BookingRequestDto): Promise<void> {
+  bookAppointment: async function (data: BookingRequest): Promise<void> {
     // TODO: remove it
     await new Promise((res) => setTimeout(res, 1000));
     // try {

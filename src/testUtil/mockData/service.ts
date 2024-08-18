@@ -1,6 +1,6 @@
-import { ServiceDto } from '../../interfaces/service';
+import { Service } from '../../interfaces/service';
 
-const mockServiceDto: ServiceDto = {
+const mockService: Service = {
   id: 1,
   name: 'Service 1',
   serviceTypeId: 1,
@@ -9,6 +9,6 @@ const mockServiceDto: ServiceDto = {
   tax: 5,
 };
 
-export function createMockServiceDto(params?: Partial<ServiceDto>) {
-  return { ...mockServiceDto, ...params };
+export function createMockService(params?: Partial<Service>) {
+  return { ...mockService, ...params };
 }
