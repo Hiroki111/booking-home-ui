@@ -7,7 +7,7 @@ import { HomePageContextInterface, HomePageContext } from '../../../../../../con
 import { NO_PREFERENCE_STAFF } from '../../../../../../staticData/staff';
 import { createMockHomePageContextValue } from '../../../../../../testUtil/mockData/HomePageContext';
 import { createMockStaff } from '../../../../../../testUtil/mockData/staff';
-import { QueryClientProvider, QueryClient } from 'react-query';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { RootThemeProvider } from '../../../../../../theme/RootThemeProvider';
 
 describe('StaffPanel.tsx', () => {

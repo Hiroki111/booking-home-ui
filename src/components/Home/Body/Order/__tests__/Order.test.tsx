@@ -1,5 +1,5 @@
 import { screen, render } from '@testing-library/react';
-import { QueryClientProvider, QueryClient } from 'react-query';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { MemoryRouter } from 'react-router-dom';
 
 import { Order } from '../Order';
